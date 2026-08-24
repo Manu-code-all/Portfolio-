@@ -2,9 +2,11 @@
 
 ## Current state (as of 2026-08-24)
 
-- **Phase 0 (Setup):** Done. Git repo initialized, branch `mastermind/portfolio`, `docs/` scaffolded, project registered in `~/.claude/projects-registry.json`. Remote added: https://github.com/Manu-code-all/Portfolio- (pushed).
-- **Phase 1 (Discovery):** `docs/DISCOVERY.md` drafted and pushed. **Not yet gated/approved** — this is the next action.
-- **Phase 2 onward:** Not started.
+- **Phase 0 (Setup):** Done. Git repo initialized, branch `mastermind/portfolio`, `docs/` scaffolded, project registered in `~/.claude/projects-registry.json`. Remote: https://github.com/Manu-code-all/Portfolio- (`main` = default branch, `mastermind/portfolio` = feature branch).
+- **Phase 1 (Discovery):** `docs/DISCOVERY.md` drafted and **approved** by user.
+- **Phase 2 (PRD):** `docs/PRD.md` drafted, pushed. **Not yet gated/approved** — this is the next action. Open questions still outstanding: deploy target (Vercel assumed, unconfirmed) and whether to attempt the P2 design-practice write-up.
+- **PR:** https://github.com/Manu-code-all/Portfolio-/pull/1 (mastermind/portfolio → main) open, contains Discovery + PRD commits.
+- **Phase 3 onward:** Not started.
 
 ## Key facts carried forward
 
@@ -15,6 +17,19 @@
 - No system-design portfolio section — explicitly excluded (no real track record); systems thinking shows through in project case-study architecture diagrams instead.
 - Profile links: GitHub github.com/Manu-code-all, LinkedIn, LeetCode, GeeksforGeeks (all in DISCOVERY.md §9).
 
+## Pacing constraint (hard rule — set 2026-08-24)
+
+User wants this built gradually, NOT in one sitting: small commits spread across real days so the GitHub history looks like natural incremental human work, target completion **2026-09-15**. Do not rush multiple phases/days of work into a single session unless the user explicitly asks to catch up or accelerate. Cadence plan:
+- Aug 24–26: Phase 1–2 gates
+- Aug 27–30: Phase 3 feature docs (~3 per session)
+- Aug 31–Sep 1: Phase 4 implementation plan
+- Sep 2: Phase 5 API record
+- Sep 3–4: Phase 6 design
+- Sep 5–6: Phase 7 wireframes
+- Sep 7–13: Phase 8 build (task-by-task, few small commits/day)
+- Sep 14: Phase 9 wrap
+- Sep 15: deploy
+
 ## Next action
 
-Re-present the Phase 1 gate: get explicit approve/revise on `docs/DISCOVERY.md` before starting Phase 2 (PRD).
+Get explicit approve/revise on `docs/PRD.md` (Phase 2 gate) — including resolving the Vercel deploy-target question. Per pacing plan, stop for the day after that rather than continuing into Phase 3 immediately.

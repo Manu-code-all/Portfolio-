@@ -15,7 +15,7 @@
 - Owner: Manu Gupta, 3rd-year CS student, Galgotia University, CGPA 7.7, no work experience — purely academic + project-based. Portfolio must not overstate experience level.
 - Stack: Next.js + React + Tailwind, deploy target: Vercel (confirmed).
 - Look and feel: dark mode default, minimal/near-monochrome palette, restrained/fast motion.
-- 3 real projects to turn into case studies (repos in DISCOVERY.md §7): Student Management System, Medicity (AI angle dropped, reframed as full-stack MERN), Job-Portal-Web-App.
+- 3 real projects to turn into case studies (repos in DISCOVERY.md §7): Student Management System, Medicity (verified static healthcare website), Job-Portal-Web-App.
 - No system-design portfolio section — explicitly excluded (no real track record); systems thinking shows through in project case-study architecture diagrams instead.
 - Profile links: GitHub github.com/Manu-code-all, LinkedIn, LeetCode, GeeksforGeeks (all in DISCOVERY.md §9).
 
@@ -33,4 +33,4 @@ User wants this built gradually, NOT in one sitting: small commits spread across
 
 ## Next action
 
-Resolve the Medicity source discrepancy and replace or correct the stale resume before publishing those portfolio assets. Phase 6 design work can proceed independently after that decision.
+Replace or correct the stale resume before publishing it as a portfolio asset. Phase 6 design work can proceed independently.

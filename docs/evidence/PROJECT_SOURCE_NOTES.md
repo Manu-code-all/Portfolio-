@@ -31,7 +31,7 @@ These notes satisfy the verification gate in `docs/features/03-project-case-stud
 - **Do not claim:** React, Node.js, Express, MongoDB, a full-stack MERN architecture, disease prediction, medicine recommendations, pharmacy lookup, AI, or an application data flow. These claims are not supported by this repository.
 - **Diagram scope:** static-page navigation and referenced client assets only, unless the owner supplies the separate implementation repository that contains the claimed application.
 
-**Conflict requiring owner resolution:** `docs/DISCOVERY.md`, `docs/PRD.md`, and the current resume describe Medicity as a MERN/AI-related project. The linked repository does not substantiate that description. The portfolio must either use a different correct repository or revise its Medicity case study to accurately describe the static site.
+**Resolution:** the portfolio discovery and case-study specifications were corrected on 2026-08-26 to describe Medicity as the verified static healthcare website. The current resume still contains unsupported MERN/AI wording and must be replaced or corrected before publication.
 
 ## 3. Job Portal Web App
 
@@ -48,4 +48,4 @@ These notes satisfy the verification gate in `docs/features/03-project-case-stud
 
 ## Portfolio content gate
 
-The Student Management System and Job Portal diagrams can be written from the evidence above. Medicity’s existing portfolio content is blocked until its repository/source claim is resolved. The current resume is also blocked from publication because its displayed education state says “1st year” while approved portfolio content says “3rd-year,” and its PDF metadata still identifies “John Doe.”
+The Student Management System and Job Portal diagrams can be written from the evidence above. Medicity can be included with the corrected static-site framing above. The current resume remains blocked from publication because its displayed education state says “1st year” while approved portfolio content says “3rd-year,” its Medicity description is unsupported, and its PDF metadata still identifies “John Doe.”

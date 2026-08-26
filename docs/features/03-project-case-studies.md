@@ -14,8 +14,8 @@ Feature exactly these three projects, in this order:
    - Known capabilities: records marks, calculates GPA/CGPA, and generates academic reports.
 2. **Medicity**
    - Repository: `https://github.com/Manu-code-all/Medicity.git`
-   - Known stack: React.js, MongoDB, Express, Node.js
-   - Frame as a full-stack MERN application with a recommendation/lookup engine. Do not call it “AI-powered” or position Manu as an AI/ML developer.
+   - Verified stack: HTML, CSS/SCSS, JavaScript/jQuery, PHP mailer asset
+   - Frame as a static, multi-page healthcare website with appointment, doctor, department, service, shop, and contact pages. Do not claim React, Node.js, Express, MongoDB, AI, a recommendation engine, or an application data flow.
 3. **Job Portal Web App**
    - Repository: `https://github.com/Manu-code-all/Job-Portal-Webapp-Java-final-project.git`
    - Known stack: Java, JSP, Servlets, JDBC, MySQL, Apache Tomcat, Maven
@@ -62,7 +62,7 @@ Suggested diagram form after verification:
 | Project | Preferred diagram |
 | --- | --- |
 | Student Management System | Class/component flow for marks input → calculation → report generation |
-| Medicity | Client → API → data/lookup flow, with only verified services and stores |
+| Medicity | Static page navigation → referenced client assets; include only the verified Vercel root rewrite as deployment context |
 | Job Portal Web App | MVC request flow plus verified user roles and persistence layer |
 
 ## Interaction and accessibility

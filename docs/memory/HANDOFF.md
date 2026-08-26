@@ -6,7 +6,8 @@
 - **Phase 1 (Discovery):** `docs/DISCOVERY.md` drafted and **approved** by user.
 - **Phase 2 (PRD):** `docs/PRD.md` drafted and **approved** by user on 2026-08-26. Vercel confirmed as deployment target; P2 stretch feature 9 approved if time permits.
 - **PR:** https://github.com/Manu-code-all/Portfolio-/pull/1 (mastermind/portfolio → main) open, contains Discovery + PRD commits.
-- **Phase 3 (Feature Breakdown):** Next up.
+- **Phase 3 (Feature Breakdown):** Done. All nine feature specifications are present in `docs/features/`.
+- **Phase 4 (Implementation Plan):** Done. `docs/IMPLEMENTATION_PLAN.md` defines architecture, build order, quality checks, and the Vercel release handoff.
 
 ## Key facts carried forward
 
@@ -31,4 +32,4 @@ User wants this built gradually, NOT in one sitting: small commits spread across
 
 ## Next action
 
-Begin Phase 3 (Feature specs in `docs/features/`).
+Begin Phase 5: record that the static v1 has no application API, then gather source evidence from the three project repositories and the approved resume asset before scaffolding the site.

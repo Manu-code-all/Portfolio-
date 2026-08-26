@@ -8,6 +8,7 @@
 - **PR:** https://github.com/Manu-code-all/Portfolio-/pull/1 (mastermind/portfolio → main) open, contains Discovery + PRD commits.
 - **Phase 3 (Feature Breakdown):** Done. All nine feature specifications are present in `docs/features/`.
 - **Phase 4 (Implementation Plan):** Done. `docs/IMPLEMENTATION_PLAN.md` defines architecture, build order, quality checks, and the Vercel release handoff.
+- **Phase 5 (API Record):** Done. `docs/API_RECORD.md` records the static v1’s no-API architecture. Source evidence is in `docs/evidence/PROJECT_SOURCE_NOTES.md`.
 
 ## Key facts carried forward
 
@@ -32,4 +33,4 @@ User wants this built gradually, NOT in one sitting: small commits spread across
 
 ## Next action
 
-Begin Phase 5: record that the static v1 has no application API, then gather source evidence from the three project repositories and the approved resume asset before scaffolding the site.
+Resolve the Medicity source discrepancy and replace or correct the stale resume before publishing those portfolio assets. Phase 6 design work can proceed independently after that decision.

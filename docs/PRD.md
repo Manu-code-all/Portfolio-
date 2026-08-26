@@ -1,5 +1,5 @@
 # PRD — Manu Gupta Portfolio
-Version: 1.0 · Date: 2026-08-24 · Status: draft
+Version: 1.0 · Date: 2026-08-26 · Status: approved
 Source: docs/DISCOVERY.md
 
 ## 1. Overview
@@ -113,7 +113,7 @@ No user accounts, no forms that write data, no backend persistence — everythin
 - **Performance:** Lighthouse mobile performance score ≥ 90, verified with an actual run before Phase 9 sign-off.
 - **Dark mode:** loads in dark theme by default; text contrast passes WCAG AA against the dark background.
 
-## 9. Open questions
+## 9. Decisions & Approvals
 
-- **DEFERRED(user):** Confirm Vercel as the deploy target, or specify an alternative — assumed for now, needs confirmation before Phase 8 build/deploy steps.
-- **DEFERRED(user):** Whether the P2 design-practice write-up (Feature 9) is attempted at all, decided once the 3 core case studies are done and remaining time/appetite is known.
+- **RESOLVED(user):** Vercel confirmed as the deployment target.
+- **RESOLVED(user):** P2 design-practice write-up (Feature 9) will be attempted if time permits after the core 3 case studies are completed.

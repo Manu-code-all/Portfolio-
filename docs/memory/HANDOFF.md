@@ -37,8 +37,12 @@ Approved final resume: `assets/resume/Manu_Gupta_Resume.pdf` (generator: `assets
 
 **Note:** user supplied an interim resume draft (`Manu_Gupta_3rd_year_resume.pdf`) claiming unbuilt features for Medicity (Google Maps, symptom/disease lookup, medicine recommendations) and Student Management System (Collections-based O(1) lookup). Repos were re-verified — neither has changed since the original check. User's decision: build those features into the real repos **after** the portfolio ships, not before. Do not add these claims to portfolio content or resume until re-verified as actually present in the code.
 
+## Phase 6 (Design)
+
+Done. `docs/DESIGN.md` drafted: "Machine-Shop Minimal" lane, warm-graphite near-monochrome palette with a single rust accent (Signal Rust #C4692E), Red Hat Display/Text/Mono typography (Space Grotesk/Inter explicitly rejected as reflex defaults), restrained settle-in-only motion, disclosure-pattern project rows (not card grids). **Awaiting user gate.**
+
 ## Next action
 
-Phase 6 (design system) is next, per pacing plan (slated Sep 3–4). Don't start it early just because we're ahead of schedule on planning — hold the pacing constraint above.
+Get explicit approve/revise on `docs/DESIGN.md`. Then Phase 7 (wireframes) is next — per pacing plan originally slated Sep 5–6, but we're running ahead of schedule; still don't rush straight into it without a stopping point unless user wants to keep going.
 
 Per pacing plan: Aug 27–30 was allotted to Phase 3 feature docs (already done ahead of schedule, plus the unplanned-but-valuable source-verification work). Phase 6 design is slated for Sep 3–4 — don't rush into full design + wireframes + build in one sitting even though we're ahead of schedule; keep sessions small per the pacing constraint above.

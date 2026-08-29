@@ -31,13 +31,14 @@ User wants this built gradually, NOT in one sitting: small commits spread across
 - Sep 14: Phase 9 wrap
 - Sep 15: deploy
 
-## Resume status
+## Resume status — RESOLVED 2026-08-29
 
-Original `Manu Resume Edited.pdf` has two problems blocking publication: displayed education says "1st year" (contradicts approved "3rd-year" content) and PDF metadata still identifies "John Doe" (template leftover). A corrected version was drafted via `tmp/create_resume.py` → `output/pdf/Manu_Gupta_Resume.pdf` (3rd-year, corrected Medicity framing, no AI/MERN claims). **Not yet reviewed/approved by user, not yet committed** — these are scratch/output files, not part of the tracked docs workflow.
+Approved final resume: `assets/resume/Manu_Gupta_Resume.pdf` (generator: `assets/resume/create_resume.py`). 3rd-year education state, verified-only project claims (see `docs/evidence/PROJECT_SOURCE_NOTES.md` for the full resolution). Unblocks `docs/features/06-resume.md`.
+
+**Note:** user supplied an interim resume draft (`Manu_Gupta_3rd_year_resume.pdf`) claiming unbuilt features for Medicity (Google Maps, symptom/disease lookup, medicine recommendations) and Student Management System (Collections-based O(1) lookup). Repos were re-verified — neither has changed since the original check. User's decision: build those features into the real repos **after** the portfolio ships, not before. Do not add these claims to portfolio content or resume until re-verified as actually present in the code.
 
 ## Next action
 
-1. Get user approval on the corrected resume draft (`output/pdf/Manu_Gupta_Resume.pdf`) before treating it as final.
-2. Phase 6 (design system) can proceed independently of the resume decision.
+Phase 6 (design system) is next, per pacing plan (slated Sep 3–4). Don't start it early just because we're ahead of schedule on planning — hold the pacing constraint above.
 
 Per pacing plan: Aug 27–30 was allotted to Phase 3 feature docs (already done ahead of schedule, plus the unplanned-but-valuable source-verification work). Phase 6 design is slated for Sep 3–4 — don't rush into full design + wireframes + build in one sitting even though we're ahead of schedule; keep sessions small per the pacing constraint above.

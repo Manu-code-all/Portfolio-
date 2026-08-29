@@ -48,4 +48,10 @@ These notes satisfy the verification gate in `docs/features/03-project-case-stud
 
 ## Portfolio content gate
 
-The Student Management System and Job Portal diagrams can be written from the evidence above. Medicity can be included with the corrected static-site framing above. The current resume remains blocked from publication because its displayed education state says “1st year” while approved portfolio content says “3rd-year,” its Medicity description is unsupported, and its PDF metadata still identifies “John Doe.”
+The Student Management System and Job Portal diagrams can be written from the evidence above. Medicity can be included with the corrected static-site framing above.
+
+**Resolved 2026-08-29:** the user supplied a new resume draft claiming Google Maps/geolocation, symptom/disease lookup, and medicine recommendations for Medicity, and O(1)/Collections-based lookup for Student Management System. Both repos were re-cloned and re-checked — no new commits since the original verification (Medicity still at `ee81391...`, dated 2025-09-18; Student Management still at `74ed041...`, dated 2025-05-25), and a targeted grep of Medicity's JS/PHP assets found no maps/geolocation/symptom/disease/recommend code. These claims are not supported by the repositories as they exist today.
+
+**Decision (user, 2026-08-29):** publish only verified facts for now. The user intends to actually build the claimed features (Maps integration, symptom lookup, recommendation logic for Medicity; Collections-based lookup for Student Management System) into the real repos, but explicitly **after** the portfolio ships — not before. Do not add these claims to any portfolio content or resume until the repositories are re-verified to actually contain them.
+
+**Resume finalized:** `assets/resume/Manu_Gupta_Resume.pdf` is the approved resume — 3rd-year education state, corrected Medicity framing, no Collections/O(1) claim, no "scalable" claim on the Job Portal. Generated via `assets/resume/create_resume.py`. This unblocks the resume-download feature (`docs/features/06-resume.md`).

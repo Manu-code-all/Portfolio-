@@ -1,0 +1,9 @@
+# Memory — Manu Gupta Portfolio
+
+## Entries
+- [P1/discovery] DECISION: dropped Medicity's original AI/MERN framing after resume text didn't match repo evidence → reframed around whatever the repo actually shows (kept updating as verification progressed).
+- [P3/evidence] MISTAKE: original resume claimed Medicity was React/Node/MongoDB with disease prediction; cloning the actual repo showed a static HTML/CSS/SCSS/jQuery site with a PHP mailer, no backend → RESOLVED: `docs/DISCOVERY.md` and `docs/evidence/PROJECT_SOURCE_NOTES.md` corrected to the verified static-site framing.
+- [P3/evidence] GOTCHA: Student Management System repo's root `README.md` describes an unrelated "online job portal" — do not use that README as evidence; the actual source is in `Student_management_system.zip`.
+- [resume] MISTAKE: user's original `Manu Resume Edited.pdf` had stale "1st year" education text and "John Doe" PDF metadata (template leftover) → RESOLVED 2026-08-26/29: regenerated clean resume at `assets/resume/Manu_Gupta_Resume.pdf` via `assets/resume/create_resume.py`.
+- [resume] MISTAKE: user supplied a second resume draft (2026-08-29) claiming Google Maps/geolocation/symptom-disease-lookup for Medicity and O(1)/Collections-based lookup for Student Management System — re-cloned both repos, confirmed no commits since original verification and no matching code (grepped JS/PHP assets) → RESOLVED: kept resume/portfolio to verified facts only. User's stated plan: build these features into the real repos for real, but only *after* the portfolio ships. Do not add these claims until re-verified as present in code.
+- [general] DECISION: user wants gradual, small-commit pacing through 2026-09-15 so GitHub history reads as natural incremental work, not a one-day AI blast. Hold this even when ahead of schedule — see `docs/memory/HANDOFF.md` pacing section.

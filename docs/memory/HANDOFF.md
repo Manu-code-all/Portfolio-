@@ -1,6 +1,6 @@
 # Handoff — Portfolio project
 
-## Current state (as of 2026-08-26)
+## Current state (as of 2026-08-29)
 
 - **Phase 0 (Setup):** Done. Git repo initialized, branch `mastermind/portfolio`, `docs/` scaffolded. Remote: https://github.com/Manu-code-all/Portfolio- (`main` = default branch, `mastermind/portfolio` = feature branch).
 - **Phase 1 (Discovery):** `docs/DISCOVERY.md` drafted and **approved** by user.
@@ -31,6 +31,13 @@ User wants this built gradually, NOT in one sitting: small commits spread across
 - Sep 14: Phase 9 wrap
 - Sep 15: deploy
 
+## Resume status
+
+Original `Manu Resume Edited.pdf` has two problems blocking publication: displayed education says "1st year" (contradicts approved "3rd-year" content) and PDF metadata still identifies "John Doe" (template leftover). A corrected version was drafted via `tmp/create_resume.py` → `output/pdf/Manu_Gupta_Resume.pdf` (3rd-year, corrected Medicity framing, no AI/MERN claims). **Not yet reviewed/approved by user, not yet committed** — these are scratch/output files, not part of the tracked docs workflow.
+
 ## Next action
 
-Replace or correct the stale resume before publishing it as a portfolio asset. Phase 6 design work can proceed independently.
+1. Get user approval on the corrected resume draft (`output/pdf/Manu_Gupta_Resume.pdf`) before treating it as final.
+2. Phase 6 (design system) can proceed independently of the resume decision.
+
+Per pacing plan: Aug 27–30 was allotted to Phase 3 feature docs (already done ahead of schedule, plus the unplanned-but-valuable source-verification work). Phase 6 design is slated for Sep 3–4 — don't rush into full design + wireframes + build in one sitting even though we're ahead of schedule; keep sessions small per the pacing constraint above.

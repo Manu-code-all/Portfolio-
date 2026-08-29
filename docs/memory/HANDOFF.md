@@ -39,10 +39,10 @@ Approved final resume: `assets/resume/Manu_Gupta_Resume.pdf` (generator: `assets
 
 ## Phase 6 (Design)
 
-Done. `docs/DESIGN.md` drafted: "Machine-Shop Minimal" lane, warm-graphite near-monochrome palette with a single rust accent (Signal Rust #C4692E), Red Hat Display/Text/Mono typography (Space Grotesk/Inter explicitly rejected as reflex defaults), restrained settle-in-only motion, disclosure-pattern project rows (not card grids). **Awaiting user gate.**
+Done and **approved** by user (2026-08-29). `docs/DESIGN.md`: "Machine-Shop Minimal" lane, warm-graphite near-monochrome palette with a single rust accent (Signal Rust #C4692E), Red Hat Display/Text/Mono typography, restrained settle-in-only motion, disclosure-pattern project rows (not card grids).
 
 ## Next action
 
-Get explicit approve/revise on `docs/DESIGN.md`. Then Phase 7 (wireframes) is next — per pacing plan originally slated Sep 5–6, but we're running ahead of schedule; still don't rush straight into it without a stopping point unless user wants to keep going.
+Phase 7 (wireframes/mockups) is next. Pacing plan originally slated this for Sep 5–6 — we're running well ahead of schedule (all of Phases 1-6 done by Aug 29, target was Sep 4). **Check with user each session whether to continue now or stop for the day** — don't auto-continue into Phase 7 without asking, per the hard pacing constraint above.
 
 Per pacing plan: Aug 27–30 was allotted to Phase 3 feature docs (already done ahead of schedule, plus the unplanned-but-valuable source-verification work). Phase 6 design is slated for Sep 3–4 — don't rush into full design + wireframes + build in one sitting even though we're ahead of schedule; keep sessions small per the pacing constraint above.

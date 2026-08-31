@@ -23,10 +23,13 @@
      material as the page itself. See DESIGN.md §5. */
   --color-on-accent: var(--color-bg);
 
-  /* ---- Typography — DESIGN.md §3 ---- */
-  --font-display: 'Red Hat Display', system-ui, sans-serif;
-  --font-body: 'Red Hat Text', system-ui, sans-serif;
-  --font-mono: 'Red Hat Mono', ui-monospace, 'SFMono-Regular', monospace;
+  /* ---- Typography — DESIGN.md §3 ----
+     Reference next/font's self-hosted generated font vars (set on <html>
+     in app/layout.tsx) — next/font's generated family name won't match a
+     literal 'Red Hat Display' string, so this must go through the var. */
+  --font-display: var(--font-red-hat-display), system-ui, sans-serif;
+  --font-body: var(--font-red-hat-text), system-ui, sans-serif;
+  --font-mono: var(--font-red-hat-mono), ui-monospace, 'SFMono-Regular', monospace;
 
   --weight-display-heavy: 800;
   --weight-display-bold: 700;
@@ -86,16 +89,18 @@
 }
 
 @theme inline {
-  /* Tailwind v4 theme configuration — maps to design tokens above */
-  --colors-bg: var(--color-bg);
-  --colors-surface: var(--color-surface);
-  --colors-border: var(--color-border);
-  --colors-text: var(--color-text);
-  --colors-text-muted: var(--color-text-muted);
-  --colors-accent: var(--color-accent);
-  --colors-accent-hover: var(--color-accent-hover);
-  --colors-danger: var(--color-danger);
-  --colors-on-accent: var(--color-on-accent);
+  /* Tailwind v4 theme configuration — maps to design tokens above.
+     Namespace must be singular --color-* (not --colors-*) or Tailwind
+     silently registers zero utility classes for it — no build error. */
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-border: var(--color-border);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-danger: var(--color-danger);
+  --color-on-accent: var(--color-on-accent);
 
   --font-display: var(--font-display);
   --font-body: var(--font-body);
@@ -250,5 +255,5 @@ button:focus-visible {
    --------------------------------------------------------------- */
 
 [id] {
-  scroll-margin-top: var(--touch-target-min);
+  scroll-margin-top: var(--space-8);
 }

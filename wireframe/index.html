@@ -838,27 +838,27 @@
 
             <h4>Architecture</h4>
             <figure class="diagram-figure">
-              <svg viewBox="0 0 560 160" role="img" aria-labelledby="sms-diagram-title" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 620 180" role="img" aria-labelledby="sms-diagram-title" xmlns="http://www.w3.org/2000/svg">
                 <title id="sms-diagram-title">Student Management System data flow: admin input through validation to file storage, and lookup through calculation to console output.</title>
-                <rect class="diagram-box" x="10" y="20" width="120" height="44" />
-                <text class="diagram-label-strong" x="70" y="46" text-anchor="middle">Admin input</text>
-                <line class="diagram-line" x1="130" y1="42" x2="180" y2="42" />
-                <rect class="diagram-box" x="180" y="20" width="120" height="44" />
-                <text class="diagram-label-strong" x="240" y="46" text-anchor="middle">Validator</text>
-                <line class="diagram-line" x1="300" y1="42" x2="350" y2="42" />
-                <rect class="diagram-box" x="350" y="20" width="150" height="44" />
-                <text class="diagram-label-strong" x="425" y="41" text-anchor="middle">data/students.txt</text>
-                <text class="diagram-label" x="425" y="55" text-anchor="middle">(flat-file persistence)</text>
+                <rect class="diagram-box" x="10" y="20" width="130" height="48" />
+                <text class="diagram-label-strong" x="75" y="48" text-anchor="middle">Admin input</text>
+                <line class="diagram-line" x1="140" y1="44" x2="180" y2="44" />
+                <rect class="diagram-box" x="180" y="20" width="130" height="48" />
+                <text class="diagram-label-strong" x="245" y="48" text-anchor="middle">Validator</text>
+                <line class="diagram-line" x1="310" y1="44" x2="350" y2="44" />
+                <rect class="diagram-box" x="350" y="20" width="250" height="48" />
+                <text class="diagram-label-strong" x="475" y="41" text-anchor="middle">data/students.txt</text>
+                <text class="diagram-label" x="475" y="56" text-anchor="middle">(flat-file persistence)</text>
 
-                <rect class="diagram-box" x="10" y="100" width="150" height="44" />
-                <text class="diagram-label-strong" x="85" y="121" text-anchor="middle">Admission no.</text>
-                <text class="diagram-label" x="85" y="135" text-anchor="middle">lookup</text>
-                <line class="diagram-line" x1="160" y1="122" x2="210" y2="122" />
-                <rect class="diagram-box" x="210" y="100" width="150" height="44" />
-                <text class="diagram-label-strong" x="285" y="126" text-anchor="middle">Marksheet.calculateCGPA()</text>
-                <line class="diagram-line" x1="360" y1="122" x2="410" y2="122" />
-                <rect class="diagram-box" x="410" y="100" width="140" height="44" />
-                <text class="diagram-label-strong" x="480" y="126" text-anchor="middle">Console output</text>
+                <rect class="diagram-box" x="10" y="104" width="170" height="48" />
+                <text class="diagram-label-strong" x="95" y="125" text-anchor="middle">Admission no.</text>
+                <text class="diagram-label" x="95" y="140" text-anchor="middle">lookup</text>
+                <line class="diagram-line" x1="180" y1="128" x2="210" y2="128" />
+                <rect class="diagram-box" x="210" y="104" width="250" height="48" />
+                <text class="diagram-label-strong" x="335" y="132" text-anchor="middle">Marksheet.calculateCGPA()</text>
+                <line class="diagram-line" x1="460" y1="128" x2="490" y2="128" />
+                <rect class="diagram-box" x="490" y="104" width="120" height="48" />
+                <text class="diagram-label-strong" x="550" y="132" text-anchor="middle">Console output</text>
               </svg>
               <figcaption>
                 Admin input → validation → <code>students.txt</code>, and admission-number lookup → <code>Marksheet</code> calculation → console output.
@@ -923,20 +923,23 @@
 
             <h4>Architecture</h4>
             <figure class="diagram-figure">
-              <svg viewBox="0 0 560 130" role="img" aria-labelledby="medicity-diagram-title" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 580 170" role="img" aria-labelledby="medicity-diagram-title" xmlns="http://www.w3.org/2000/svg">
                 <title id="medicity-diagram-title">Medicity static-page navigation and referenced client assets, with the Vercel root rewrite as deployment context.</title>
-                <rect class="diagram-box" x="10" y="16" width="130" height="40" />
-                <text class="diagram-label-strong" x="75" y="40" text-anchor="middle">home-classic.html</text>
-                <line class="diagram-line" x1="140" y1="36" x2="190" y2="36" />
-                <rect class="diagram-box" x="190" y="16" width="340" height="40" />
-                <text class="diagram-label-strong" x="360" y="34" text-anchor="middle">Appointment · Doctor · Department · Service · Shop · Contact pages</text>
-                <text class="diagram-label" x="360" y="48" text-anchor="middle">(static HTML, shared nav)</text>
+                <rect class="diagram-box" x="10" y="16" width="150" height="40" />
+                <text class="diagram-label-strong" x="85" y="40" text-anchor="middle">home-classic.html</text>
+                <line class="diagram-line" x1="160" y1="36" x2="200" y2="36" />
+                <rect class="diagram-box" x="200" y="8" width="320" height="58" />
+                <text class="diagram-label-strong" x="360" y="28" text-anchor="middle">Appointment · Doctor · Department ·</text>
+                <text class="diagram-label-strong" x="360" y="42" text-anchor="middle">Service · Shop · Contact pages</text>
+                <text class="diagram-label" x="360" y="56" text-anchor="middle">(static HTML, shared nav)</text>
 
-                <rect class="diagram-box" x="10" y="80" width="220" height="36" />
-                <text class="diagram-label-strong" x="120" y="102" text-anchor="middle">jquery-3.5.1.min.js · plugins.js · main.js</text>
-                <line class="diagram-line" x1="230" y1="98" x2="280" y2="98" />
-                <rect class="diagram-box" x="280" y="80" width="250" height="36" />
-                <text class="diagram-label-strong" x="405" y="102" text-anchor="middle">vercel.json root rewrite → /medcity/home-classic.html</text>
+                <rect class="diagram-box" x="10" y="100" width="230" height="52" />
+                <text class="diagram-label-strong" x="125" y="120" text-anchor="middle">jquery-3.5.1.min.js ·</text>
+                <text class="diagram-label-strong" x="125" y="134" text-anchor="middle">plugins.js · main.js</text>
+                <line class="diagram-line" x1="240" y1="126" x2="280" y2="126" />
+                <rect class="diagram-box" x="280" y="100" width="270" height="52" />
+                <text class="diagram-label-strong" x="415" y="120" text-anchor="middle">vercel.json root rewrite →</text>
+                <text class="diagram-label-strong" x="415" y="134" text-anchor="middle">/medcity/home-classic.html</text>
               </svg>
               <figcaption>
                 Static-page navigation across the healthcare content pages, referenced client-side assets, and the verified Vercel root rewrite as deployment context. No backend, data store, or recommendation logic is present in the source.
@@ -1007,25 +1010,26 @@
 
             <h4>Architecture</h4>
             <figure class="diagram-figure">
-              <svg viewBox="0 0 560 170" role="img" aria-labelledby="jobportal-diagram-title" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 620 190" role="img" aria-labelledby="jobportal-diagram-title" xmlns="http://www.w3.org/2000/svg">
                 <title id="jobportal-diagram-title">Job Portal MVC request flow: role-specific JSP views through servlet controllers and a DAO layer to MySQL tables.</title>
-                <rect class="diagram-box" x="10" y="16" width="120" height="40" />
-                <text class="diagram-label-strong" x="70" y="40" text-anchor="middle">JSP views</text>
-                <text class="diagram-label" x="70" y="53" text-anchor="middle">(Admin/Employer/Seeker)</text>
-                <line class="diagram-line" x1="130" y1="36" x2="175" y2="36" />
-                <rect class="diagram-box" x="175" y="16" width="140" height="40" />
-                <text class="diagram-label-strong" x="245" y="40" text-anchor="middle">Servlet controllers</text>
-                <line class="diagram-line" x1="315" y1="36" x2="360" y2="36" />
-                <rect class="diagram-box" x="360" y="16" width="100" height="40" />
-                <text class="diagram-label-strong" x="410" y="40" text-anchor="middle">DAO layer</text>
-                <line class="diagram-line" x1="410" y1="56" x2="410" y2="90" />
-                <rect class="diagram-box" x="300" y="90" width="220" height="40" />
-                <text class="diagram-label-strong" x="410" y="114" text-anchor="middle">MySQL: users, jobs, applications, job_audit</text>
+                <rect class="diagram-box" x="10" y="16" width="170" height="48" />
+                <text class="diagram-label-strong" x="95" y="38" text-anchor="middle">JSP views</text>
+                <text class="diagram-label" x="95" y="53" text-anchor="middle">(Admin/Employer/Seeker)</text>
+                <line class="diagram-line" x1="180" y1="40" x2="210" y2="40" />
+                <rect class="diagram-box" x="210" y="16" width="170" height="48" />
+                <text class="diagram-label-strong" x="295" y="44" text-anchor="middle">Servlet controllers</text>
+                <line class="diagram-line" x1="380" y1="40" x2="420" y2="40" />
+                <rect class="diagram-box" x="420" y="16" width="120" height="48" />
+                <text class="diagram-label-strong" x="480" y="44" text-anchor="middle">DAO layer</text>
+                <line class="diagram-line" x1="480" y1="64" x2="480" y2="104" />
+                <rect class="diagram-box" x="370" y="104" width="220" height="52" />
+                <text class="diagram-label-strong" x="480" y="124" text-anchor="middle">MySQL: users, jobs,</text>
+                <text class="diagram-label-strong" x="480" y="138" text-anchor="middle">applications, job_audit</text>
 
-                <rect class="diagram-box" x="10" y="90" width="240" height="60" />
-                <text class="diagram-label-strong" x="130" y="112" text-anchor="middle">Roles</text>
-                <text class="diagram-label" x="130" y="128" text-anchor="middle">ADMIN · EMPLOYER · JOBSEEKER</text>
-                <text class="diagram-label" x="130" y="142" text-anchor="middle">approval + audit trail via job_audit</text>
+                <rect class="diagram-box" x="10" y="104" width="280" height="68" />
+                <text class="diagram-label-strong" x="150" y="124" text-anchor="middle">Roles</text>
+                <text class="diagram-label" x="150" y="140" text-anchor="middle">ADMIN · EMPLOYER · JOBSEEKER</text>
+                <text class="diagram-label" x="150" y="156" text-anchor="middle">approval + audit trail via job_audit</text>
               </svg>
               <figcaption>
                 Role-specific JSP views route through servlet controllers to a DAO layer backed by MySQL (<code>users</code>, <code>jobs</code>, <code>applications</code>, <code>job_audit</code>). Admin approval actions run inside explicit commit/rollback with an audit record.

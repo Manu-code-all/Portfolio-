@@ -203,7 +203,7 @@ Phase 4 is complete when this plan is approved. Implementation begins only after
 
 ## Tasks
 
-Status: executing · Progress: 8/26 tasks
+Status: executing · Progress: 12/26 tasks
 
 Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens, resume asset) are the only things everything else needs and have zero file overlap, so they run in parallel. T05/T06/T14/T16–T18 (UI primitives, content data, all three diagrams) again only need T02/T03 and touch disjoint files — a second wide parallel window, front-loading the highest-scrutiny work (fact-checked project diagrams) early rather than last. T07→T08 is a deliberately narrow, sequential walking skeleton (Hero only) that proves the full pipeline — scaffold, tokens, types, content, one real component, production build, resume asset serving — before fanning out to the other five sections and header/footer in parallel (T09–T13, T15). T19 is the first real convergence point (projects + all 3 diagrams). T20 is the second, full-scope build checkpoint. T21–T26 are metadata → QA → performance → deploy, each gated on the previous.
 
@@ -377,7 +377,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
   - Stack tags exactly match "Verified stack" lines: Student Management = Java/OOP/File I/O (not Collections Framework — this exact mistake already happened once, see MEMORY.md); Medicity = HTML/CSS-SCSS/JS-jQuery/PHP mailer (not React/Node/MongoDB/AI); Job Portal = Java/JSP/Servlets/JDBC/MySQL/Tomcat/Maven.
   - `repoUrl` values match the three canonical `.git` URLs character-for-character.
   - `order` reflects the required 1/2/3 sequence.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T15 — Project card + detail disclosure components
 - Feature: `docs/features/03-project-case-studies.md` ("Interaction and accessibility") + `wireframe/index.html` project-row markup as structural contract
@@ -402,7 +402,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
   - Only these two flows: "Admin input → validation → `students.txt`" and "Admission number lookup → `Marksheet.calculateCGPA()` → console output." No database, web UI, or report-export claim.
   - `<svg role="img">` with `<title>` + visible `<figcaption>`.
   - Genuinely distinct stacked layout below ~480–640px, not the same viewBox scaled — inspect rendered markup at both breakpoints and confirm the box arrangement changes. The approved wireframe itself doesn't demonstrate this (it just scales the same viewBox down) — this task must go beyond the wireframe on this specific point, per the feature doc's explicit requirement.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T17 — Medicity diagram
 - Feature: `docs/features/03-project-case-studies.md` + `docs/evidence/PROJECT_SOURCE_NOTES.md` §2
@@ -413,7 +413,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
 - Review criteria:
   - Vocabulary limited to: static pages (home-classic.html + appointment/doctor/department/service/shop/contact), the three named JS assets, and the verified `vercel.json` rewrite. Zero backend/data-flow/database/AI/recommendation-engine implication in any label or shape — highest-risk diagram for AI-slop drift back toward the rejected MERN/AI framing (MEMORY.md already logged this mistake once).
   - Same accessible-title/figcaption/stacked-mobile requirements as T16.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T18 — Job Portal diagram
 - Feature: `docs/features/03-project-case-studies.md` + `docs/evidence/PROJECT_SOURCE_NOTES.md` §3
@@ -424,7 +424,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
 - Review criteria:
   - Flow matches source notes exactly: JSP views → servlet controllers → DAO → MySQL (`users`, `jobs`, `applications`, `job_audit`); roles ADMIN/EMPLOYER/JOBSEEKER; commit/rollback + audit only on approval. No production/real-users/secure-auth claim (source notes flag a plaintext sample password).
   - Same accessible-title/figcaption/stacked-mobile requirements as T16.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T19 — Projects section wrapper
 - Feature: `docs/features/03-project-case-studies.md`

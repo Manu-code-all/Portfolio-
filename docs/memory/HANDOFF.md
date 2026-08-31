@@ -1,6 +1,6 @@
 # Handoff — Portfolio project
 
-## Current state (as of 2026-08-29)
+## Current state (as of 2026-09-01)
 
 - **Phase 0 (Setup):** Done. Git repo initialized, branch `mastermind/portfolio`, `docs/` scaffolded. Remote: https://github.com/Manu-code-all/Portfolio- (`main` = default branch, `mastermind/portfolio` = feature branch).
 - **Phase 1 (Discovery):** `docs/DISCOVERY.md` drafted and **approved** by user.
@@ -43,10 +43,16 @@ Done and **approved** by user (2026-08-29). `docs/DESIGN.md`: "Machine-Shop Mini
 
 ## Phase 7 (Wireframes)
 
-Done. `wireframe/index.html` + `index-states.html` + `tokens.css` — single-page mockup implementing DESIGN.md, disclosure-pattern project rows (no card grid), mobile nav, states reference. Sonnet review round 1: FAIL (primary-button contrast ~3.35:1, a stray comment, a preventive nav-state note) — all three fixed directly (see MEMORY), verified via grep + recomputed contrast (~4.66:1, passes). DESIGN.md §2/§5 updated to match (On Accent/Ink token). **Awaiting user click-through gate** — not yet shown to user.
+Done and **approved** by user (2026-09-01), after two rounds of real fixes: (1) Sonnet review round 1 FAIL — primary-button contrast ~3.35:1, a stray comment, a preventive nav-state note — all fixed (see MEMORY), verified via grep + recomputed contrast (~4.66:1, passes); (2) user feedback on the hero graphic ("looks thin/not good") — replaced 3 sparse boxes with a denser 6-component blueprint schematic + one-time signal animation; (3) user caught SVG text overflowing its boxes in all 3 project diagrams — rebuilt geometry for all three, verified with a headless `getBBox()` measurement (not eyeballed) showing zero overflow. Final files: `wireframe/index.html` + `index-states.html` + `tokens.css`.
+
+## Phase 8 (Build) — IN PROGRESS
+
+`docs/IMPLEMENTATION_PLAN.md` now has the full atomic task list (`## Tasks`, T01–T26, walking-skeleton-first order) designed via a Plan agent from PRD/DESIGN/features/evidence/wireframe. Three structural corrections baked in: no separate `Contact.tsx` (folded into `SiteFooter.tsx`), collapsed-state project preview icons stay inline (not separate files), and the 3 diagram components must build genuinely-stacked mobile layouts (the wireframe itself only scales down, which the feature spec forbids).
+
+Environment verified ready: Node v24.12.0, npm 11.6.2, npx present, clean repo (no existing package.json/node_modules anywhere).
+
+**Per the hard pacing constraint, only T01 (Next.js scaffold) is being executed this session** — everything else in the task list stays `[ ] pending` for future sessions, even though several tasks (T02–T06, T14, T16–T18) are unblocked and parallelizable right after T01 lands.
 
 ## Next action
 
-Show the user the wireframe (browser preview) for click-through approval. That's the last gate before Phase 8 (real Next.js build) — pacing plan slated Phase 7 for Sep 5-6, we're ahead (Aug 31). Check with user each session whether to continue or stop for the day.
-
-Per pacing plan: Aug 27–30 was allotted to Phase 3 feature docs (already done ahead of schedule, plus the unplanned-but-valuable source-verification work). Phase 6 design is slated for Sep 3–4 — don't rush into full design + wireframes + build in one sitting even though we're ahead of schedule; keep sessions small per the pacing constraint above.
+Next session: dispatch T02–T06 (+ T14, T16–T18 if the session has room) per the task list — content types, design tokens, resume asset, UI primitives, content data, project diagrams. Check with user each session whether to continue or stop for the day; don't auto-chain multiple tasks' worth of work without a natural pause point.

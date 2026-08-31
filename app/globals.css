@@ -251,9 +251,251 @@ button:focus-visible {
 }
 
 /* ---------------------------------------------------------------
+   Button styles — .btn-primary and .btn-outline
+   --------------------------------------------------------------- */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--font-size-body);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  border-radius: var(--radius-control);
+  cursor: pointer;
+  transition: transform var(--duration-micro) var(--ease-out-expo),
+              background-color var(--duration-micro) var(--ease-out-expo);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-medium);
+  font-size: var(--font-size-body);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  transition: border-color var(--duration-micro) var(--ease-out-expo),
+              color var(--duration-micro) var(--ease-out-expo);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-text-muted);
+  color: var(--color-accent);
+}
+
+/* ---------------------------------------------------------------
+   Hero section — layout, typography, decorative graphic
+   --------------------------------------------------------------- */
+
+.hero {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-7);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-7);
+  align-items: center;
+  width: 100%;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-mono-medium);
+  font-size: var(--font-size-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.hero h1 {
+  font-size: var(--font-size-display);
+  font-weight: var(--weight-display-heavy);
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-4);
+}
+
+.hero-support {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  max-width: 42ch;
+  margin-bottom: var(--space-3);
+}
+
+.hero-context {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-5);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.hero-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.hero-links a {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--duration-micro) var(--ease-out-expo);
+}
+
+.hero-links a:hover {
+  border-color: var(--color-accent);
+}
+
+.hero-graphic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-graphic svg {
+  width: 100%;
+  height: auto;
+}
+
+.diagram-line {
+  stroke: var(--color-border);
+  stroke-width: 1;
+  fill: none;
+}
+
+.diagram-line-bright {
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  fill: none;
+}
+
+.diagram-dot {
+  fill: var(--color-accent);
+}
+
+.diagram-box {
+  fill: var(--color-surface);
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.diagram-label {
+  fill: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.diagram-label-strong {
+  fill: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+/* Hero graphic: one-time signal travelling A → B on load, then it's gone —
+   settles and stops, not a perpetual loop (DESIGN.md §6). */
+.hero-signal {
+  offset-path: path('M174,45 L194,45 L194,76 L214,76');
+  offset-rotate: 0deg;
+  animation: hero-signal-travel 2.6s cubic-bezier(0.16, 1, 0.3, 1) 1s 1 both;
+}
+
+@keyframes hero-signal-travel {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+/* ---------------------------------------------------------------
    Scroll margin for anchor offset (sticky header accommodation)
    --------------------------------------------------------------- */
 
 [id] {
   scroll-margin-top: var(--space-8);
+}
+
+/* ---------------------------------------------------------------
+   Responsive — tablet and below
+   --------------------------------------------------------------- */
+
+@media (max-width: 859.98px) {
+  .hero {
+    min-height: auto;
+    padding-block: var(--space-6);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-graphic {
+    order: 2;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+
+  .hero-support {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-outline {
+    justify-content: center;
+  }
 }

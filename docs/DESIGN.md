@@ -33,8 +33,11 @@ Dark-first only (no light mode requirement per discovery). Warm-neutral base —
 | **Worn Steel** | `#9B9484` | Secondary/muted text — captions, metadata, dates. |
 | **Signal Rust** | `#C4692E` | The one accent. Links, primary CTA (résumé download, project repo links), focus rings, active nav state. Saturation kept moderate — a stamped mark, not a glow. |
 | **Caution** | `#C74A3E` | Destructive/error semantics only (not expected in v1's static flows, reserved for future form/error states). |
+| **On Accent (Ink)** | `#18160F` (= Warm Graphite) | Text/icon color when placed *on top of* a Signal Rust fill (e.g. the primary button). Reuses the background hex deliberately — button text reads as "cut from" the same dark material as the page, and it's the only pairing that clears AA contrast (see note below). |
 
 No pure black, no purple/neon, no gradient fills. Accent never exceeds ~10% of any given surface — used for text links, one button fill, and focus outlines, never as a background wash.
+
+**Contrast note (found in Phase 7 wireframe review, corrected here):** Bone text on a Signal Rust fill measures ~3.35:1 — fails AA for normal-weight/16px text. Ink (On Accent) text on the same fill measures ~4.66:1 — passes. Rule: Signal Rust as *foreground* (links, focus rings on the dark background) pairs with the page's light text tokens as normal; Signal Rust as a *fill* (button backgrounds) always pairs with On Accent (Ink) text, never Bone.
 
 ## 3. Typography
 
@@ -73,7 +76,7 @@ Google Fonts: `Red Hat Display:wght@500;600;700;800`, `Red Hat Text:wght@400;500
 
 | Component | Shape / treatment | States |
 |---|---|---|
-| **Primary button** (résumé download) | Flat fill, Signal Rust background, Bone text, subtly rounded (`0.375rem`) — no pill, no glow | default, hover (−1px translate + slight darken), focus-visible (2px Bone ring offset), active |
+| **Primary button** (résumé download) | Flat fill, Signal Rust background, **On Accent (Ink) text** (not Bone — see §2 contrast note), subtly rounded (`0.375rem`) — no pill, no glow | default, hover (−1px translate + slight darken), focus-visible (2px Bone ring offset), active |
 | **Text link** (nav, inline, footer) | Signal Rust text, underline on hover only (not permanent) | default, hover, focus-visible, visited (no distinct treatment — not needed) |
 | **Project card / row** | No boxed card with drop shadow — use a `border-top: 1px solid Seam` divider between project rows instead (impeccable: "cards are the lazy answer"). Disclosure pattern: click/tap expands the full case study inline. | collapsed, expanded, hover (Seam border brightens slightly), focus-visible |
 | **Skill tag** | Small, Red Hat Mono, Seam border, no fill — quiet, not badge-like pills in six colors | static (no interactive states needed) |

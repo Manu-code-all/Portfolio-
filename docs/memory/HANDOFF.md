@@ -41,8 +41,12 @@ Approved final resume: `assets/resume/Manu_Gupta_Resume.pdf` (generator: `assets
 
 Done and **approved** by user (2026-08-29). `docs/DESIGN.md`: "Machine-Shop Minimal" lane, warm-graphite near-monochrome palette with a single rust accent (Signal Rust #C4692E), Red Hat Display/Text/Mono typography, restrained settle-in-only motion, disclosure-pattern project rows (not card grids).
 
+## Phase 7 (Wireframes)
+
+Done. `wireframe/index.html` + `index-states.html` + `tokens.css` — single-page mockup implementing DESIGN.md, disclosure-pattern project rows (no card grid), mobile nav, states reference. Sonnet review round 1: FAIL (primary-button contrast ~3.35:1, a stray comment, a preventive nav-state note) — all three fixed directly (see MEMORY), verified via grep + recomputed contrast (~4.66:1, passes). DESIGN.md §2/§5 updated to match (On Accent/Ink token). **Awaiting user click-through gate** — not yet shown to user.
+
 ## Next action
 
-Phase 7 (wireframes/mockups) is next. Pacing plan originally slated this for Sep 5–6 — we're running well ahead of schedule (all of Phases 1-6 done by Aug 29, target was Sep 4). **Check with user each session whether to continue now or stop for the day** — don't auto-continue into Phase 7 without asking, per the hard pacing constraint above.
+Show the user the wireframe (browser preview) for click-through approval. That's the last gate before Phase 8 (real Next.js build) — pacing plan slated Phase 7 for Sep 5-6, we're ahead (Aug 31). Check with user each session whether to continue or stop for the day.
 
 Per pacing plan: Aug 27–30 was allotted to Phase 3 feature docs (already done ahead of schedule, plus the unplanned-but-valuable source-verification work). Phase 6 design is slated for Sep 3–4 — don't rush into full design + wireframes + build in one sitting even though we're ahead of schedule; keep sessions small per the pacing constraint above.

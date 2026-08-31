@@ -142,7 +142,11 @@
     transition: color var(--duration-micro) var(--ease-out-expo);
   }
   .nav-link:hover { color: var(--color-text); }
-  .nav-link.is-current { color: var(--color-accent); }
+  /* Not wired to live markup in this mockup — reserved for Phase 8 if
+     current-section nav highlighting is added. Color alone is not
+     sufficient per docs/features/08-navigation.md; pair with
+     aria-current="page" and this underline when implemented. */
+  .nav-link.is-current { color: var(--color-accent); text-decoration: underline; text-underline-offset: 0.25em; }
 
   .btn-primary {
     display: inline-flex;
@@ -658,7 +662,7 @@
         <li><a class="nav-link" href="#achievements">Achievements</a></li>
         <li><a class="nav-link" href="#contact">Contact</a></li>
         <li>
-          <!-- ponytail: resume path is a relative link into assets/resume/ for this
+          <!-- Mockup note: resume path is a relative link into assets/resume/ for this
                static mockup; the real Next.js build serves this at /resume.pdf per
                docs/features/06-resume.md -->
           <a class="btn-primary" href="../assets/resume/Manu_Gupta_Resume.pdf" target="_blank" rel="noreferrer noopener">

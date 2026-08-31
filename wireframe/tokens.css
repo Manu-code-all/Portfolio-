@@ -18,8 +18,11 @@
   --color-accent-hover: #D97A3C; /* slight lift for hover, still rust family */
   --color-danger: #C74A3E;       /* Caution — error semantics only, reserved */
 
-  /* Text-on-accent (button fill uses Bone text per DESIGN.md §5) */
-  --color-on-accent: #F2EEE3;
+  /* Text-on-accent: dark ink (same hex as page bg) on the accent fill.
+     Bone-on-Rust measured ~3.35:1 (fails AA); ink-on-Rust measures ~4.66:1 (passes).
+     Also reads intentionally: button text is "cut from" the same dark
+     material as the page itself. See DESIGN.md §5. */
+  --color-on-accent: var(--color-bg);
 
   /* ---- Typography — DESIGN.md §3 ---- */
   --font-display: 'Red Hat Display', system-ui, sans-serif;

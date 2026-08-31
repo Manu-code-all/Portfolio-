@@ -189,7 +189,6 @@ export default function MedicityDiagram() {
           x="140"
           y="85"
           textAnchor="middle"
-          fontSize="12"
         >
           Appointment · Doctor
         </text>
@@ -198,7 +197,6 @@ export default function MedicityDiagram() {
           x="140"
           y="101"
           textAnchor="middle"
-          fontSize="12"
         >
           Department · Service
         </text>
@@ -207,7 +205,6 @@ export default function MedicityDiagram() {
           x="140"
           y="117"
           textAnchor="middle"
-          fontSize="12"
         >
           Shop · Contact pages
         </text>
@@ -216,7 +213,6 @@ export default function MedicityDiagram() {
           x="140"
           y="133"
           textAnchor="middle"
-          fontSize="11"
         >
           (static HTML, shared nav)
         </text>
@@ -243,7 +239,6 @@ export default function MedicityDiagram() {
           x="140"
           y="172"
           textAnchor="middle"
-          fontSize="12"
         >
           jquery-3.5.1.min.js
         </text>
@@ -252,7 +247,6 @@ export default function MedicityDiagram() {
           x="140"
           y="188"
           textAnchor="middle"
-          fontSize="12"
         >
           plugins.js · main.js
         </text>
@@ -261,7 +255,6 @@ export default function MedicityDiagram() {
           x="140"
           y="204"
           textAnchor="middle"
-          fontSize="11"
         >
           (client-side interactivity)
         </text>
@@ -288,7 +281,6 @@ export default function MedicityDiagram() {
           x="140"
           y="252"
           textAnchor="middle"
-          fontSize="12"
         >
           vercel.json root rewrite
         </text>
@@ -297,7 +289,6 @@ export default function MedicityDiagram() {
           x="140"
           y="268"
           textAnchor="middle"
-          fontSize="12"
         >
           → /medcity/home-classic.html
         </text>
@@ -306,7 +297,6 @@ export default function MedicityDiagram() {
           x="140"
           y="284"
           textAnchor="middle"
-          fontSize="11"
         >
           (deployment config)
         </text>

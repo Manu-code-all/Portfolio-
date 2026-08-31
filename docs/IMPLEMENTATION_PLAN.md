@@ -203,7 +203,7 @@ Phase 4 is complete when this plan is approved. Implementation begins only after
 
 ## Tasks
 
-Status: executing · Progress: 4/26 tasks
+Status: executing · Progress: 6/26 tasks
 
 Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens, resume asset) are the only things everything else needs and have zero file overlap, so they run in parallel. T05/T06/T14/T16–T18 (UI primitives, content data, all three diagrams) again only need T02/T03 and touch disjoint files — a second wide parallel window, front-loading the highest-scrutiny work (fact-checked project diagrams) early rather than last. T07→T08 is a deliberately narrow, sequential walking skeleton (Hero only) that proves the full pipeline — scaffold, tokens, types, content, one real component, production build, resume asset serving — before fanning out to the other five sections and header/footer in parallel (T09–T13, T15). T19 is the first real convergence point (projects + all 3 diagrams). T20 is the second, full-scope build checkpoint. T21–T26 are metadata → QA → performance → deploy, each gated on the previous.
 
@@ -267,7 +267,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
   - `ExternalLink` always renders `target="_blank" rel="noreferrer"` plus a visually-hidden "(opens in a new tab)" — the single implementation every profile/repo/resume link reuses.
   - `ResumeLink` hardcodes `/resume.pdf` (feature 06) — no dependency on `content/profile.ts`.
   - `SectionHeading`'s `label`/`intro` props are both optional (the wireframe uses them inconsistently across sections — don't force every section to show both).
-- Status: [ ] pending
+- Status: [x] done
 
 ### T06 — Profile, skills, achievements content data
 - Feature: `docs/features/02-about.md`, `04-skills.md`, `05-achievements.md`, `07-contact.md` + `docs/DISCOVERY.md` §9
@@ -280,7 +280,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
   - URLs match `DISCOVERY.md` §9 character-for-character.
   - Skills list is exactly feature 04's two approved groups — no additions.
   - CGPA stored as plain data, never in a shape that invites a progress-bar render.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T07 — Hero section component
 - Feature: `docs/features/01-hero.md`

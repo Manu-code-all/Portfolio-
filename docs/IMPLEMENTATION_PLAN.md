@@ -203,7 +203,7 @@ Phase 4 is complete when this plan is approved. Implementation begins only after
 
 ## Tasks
 
-Status: executing · Progress: 12/26 tasks
+Status: executing · Progress: 18/26 tasks
 
 Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens, resume asset) are the only things everything else needs and have zero file overlap, so they run in parallel. T05/T06/T14/T16–T18 (UI primitives, content data, all three diagrams) again only need T02/T03 and touch disjoint files — a second wide parallel window, front-loading the highest-scrutiny work (fact-checked project diagrams) early rather than last. T07→T08 is a deliberately narrow, sequential walking skeleton (Hero only) that proves the full pipeline — scaffold, tokens, types, content, one real component, production build, resume asset serving — before fanning out to the other five sections and header/footer in parallel (T09–T13, T15). T19 is the first real convergence point (projects + all 3 diagrams). T20 is the second, full-scope build checkpoint. T21–T26 are metadata → QA → performance → deploy, each gated on the previous.
 
@@ -317,7 +317,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
   - `MobileNav` is the only client component — `aria-expanded` toggles, `Escape` closes and restores focus to the toggle, every menu link closes the menu on click (feature 08 exact requirements).
   - Desktop nav shows at ≥860px per the wireframe's single breakpoint — don't invent a different one.
   - 44×44px min toggle tap target; resume button present in both desktop nav and mobile menu.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T10 — Footer / contact
 - Feature: `docs/features/07-contact.md` (footer and contact are one component here — the wireframe implements contact entirely inside its `<footer>`, no separate contact section exists in the DOM)
@@ -329,7 +329,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
   - Single `<footer id="contact">` with heading, `mailto:` email, resume link, 4 profile links, copyright — matches wireframe exactly. No separate `sections/Contact.tsx` file should exist.
   - Email link visible as text, not icon-only.
   - No contact form anywhere.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T11 — About section
 - Feature: `docs/features/02-about.md`
@@ -341,7 +341,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
   - Two-column editorial layout ≥ tablet, single column below, matching `.about-grid`.
   - Copy pulled from `content/profile.ts`, not re-typed in the component.
   - CGPA in a `dt`/`dd` pair as plain text, never a bar/gauge.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T12 — Skills section
 - Feature: `docs/features/04-skills.md`
@@ -353,7 +353,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
   - Renders both groups from `content/skills.ts` as plain list items with visible `<h3>` group headings.
   - Two-column desktop grid collapsing to one column ≤860px.
   - No proficiency indicator attached to any tag.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T13 — Achievements section
 - Feature: `docs/features/05-achievements.md`
@@ -364,7 +364,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
 - Review criteria:
   - Renders exactly the data from `content/achievements.ts` — no trophy icon, no celebratory animation.
   - Date is visible text, not color/position alone.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T14 — Project content data
 - Feature: `docs/features/03-project-case-studies.md` + `docs/evidence/PROJECT_SOURCE_NOTES.md` (the actual fact source)
@@ -390,7 +390,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
   - `aria-expanded` + `aria-controls` + matching `id`/`role="region"` + `hidden` toggle, exact wireframe pattern.
   - No nested interactive elements — repo link is a sibling of the toggle, independently reachable.
   - The tiny 84×56 collapsed-state preview icon is an inline `aria-hidden` SVG per project (not a separate file), hidden ≤860px via CSS.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T16 — Student Management System diagram
 - Feature: `docs/features/03-project-case-studies.md` + `docs/evidence/PROJECT_SOURCE_NOTES.md` §1

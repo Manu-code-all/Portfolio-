@@ -916,10 +916,6 @@ section {
   scroll-margin-top: var(--space-8);
 }
 
-.section-pad {
-  padding-block: var(--section-gap);
-}
-
 .section-label {
   display: inline-block;
   font-family: var(--font-mono);

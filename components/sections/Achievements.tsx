@@ -16,7 +16,7 @@ export function Achievements() {
   const achievement = achievements[0];
 
   return (
-    <section id="achievements">
+    <section id="achievements" className="section-pad">
       <div className="container">
         <SectionHeading>Achievements</SectionHeading>
 

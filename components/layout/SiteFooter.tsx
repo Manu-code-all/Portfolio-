@@ -18,7 +18,7 @@ export function SiteFooter() {
       <div className="container footer-grid">
         {/* Left column: heading, email, resume download */}
         <div>
-          <h2>Let's build something thoughtful.</h2>
+          <h2>Let’s build something thoughtful.</h2>
 
           {/* Email as visible mailto: link */}
           <p className="footer-email">

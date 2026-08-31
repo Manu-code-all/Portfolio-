@@ -51,7 +51,9 @@ Done and **approved** by user (2026-09-01), after two rounds of real fixes: (1) 
 
 Environment verified ready: Node v24.12.0, npm 11.6.2, npx present, clean repo (no existing package.json/node_modules anywhere).
 
-**Per the hard pacing constraint, only T01 (Next.js scaffold) is being executed this session** — everything else in the task list stays `[ ] pending` for future sessions, even though several tasks (T02–T06, T14, T16–T18) are unblocked and parallelizable right after T01 lands.
+**T01 done (2026-09-01).** Next.js 16.3.3 + React 19.2.8 + Tailwind v4 + TypeScript scaffolded, non-interactively, into the existing repo (worked around create-next-app's non-empty-dir refusal via temp-dir + merge). `npm run build` verified twice independently (once by the reviewer, once by the orchestrator) — passes. Review round 1: FAIL on two small findings — orchestrator's own stray scratch files inside `docs/memory/reviews/` (deleted) and `package.json`'s `"name"` field inheriting the temp scaffold dir's name (fixed to `"portfolio"`) — both fixed directly, re-verified, no second review round needed for such small fixes.
+
+Per the hard pacing constraint, only T01 was executed this session — T02–T06, T14, T16–T18 are all unblocked and parallelizable right after T01, but stay `[ ] pending` for a future session.
 
 ## Next action
 

@@ -39,3 +39,21 @@ All planning documents live in [`docs/`](docs/):
 
 - `main` — default branch
 - `mastermind/portfolio` — active development branch (see [PR #1](https://github.com/Manu-code-all/Portfolio-/pull/1))
+
+## Local development
+
+To run the site locally:
+
+```bash
+npm install
+npm run dev
+```
+
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
+
+To build for production:
+
+```bash
+npm run build
+npm start
+```

@@ -197,7 +197,7 @@ Phase 4 is complete when this plan is approved. Implementation begins only after
 
 ## Tasks
 
-Status: executing · Progress: 1/26 tasks
+Status: executing · Progress: 2/26 tasks
 
 Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens, resume asset) are the only things everything else needs and have zero file overlap, so they run in parallel. T05/T06/T14/T16–T18 (UI primitives, content data, all three diagrams) again only need T02/T03 and touch disjoint files — a second wide parallel window, front-loading the highest-scrutiny work (fact-checked project diagrams) early rather than last. T07→T08 is a deliberately narrow, sequential walking skeleton (Hero only) that proves the full pipeline — scaffold, tokens, types, content, one real component, production build, resume asset serving — before fanning out to the other five sections and header/footer in parallel (T09–T13, T15). T19 is the first real convergence point (projects + all 3 diagrams). T20 is the second, full-scope build checkpoint. T21–T26 are metadata → QA → performance → deploy, each gated on the previous.
 
@@ -249,7 +249,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
 - Review criteria:
   - Byte-identical copy of `assets/resume/Manu_Gupta_Resume.pdf` (the finalized approved resume per `PROJECT_SOURCE_NOTES.md`), not any earlier draft.
   - `next build && next start` actually serves `/resume.pdf` with 200 and correct content-type — paste the fetch output.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T05 — UI primitives
 - Feature: `docs/IMPLEMENTATION_PLAN.md` repo structure (`components/ui/`) + the external-link pattern repeated 4× in `wireframe/index.html`

@@ -44,7 +44,7 @@ Each gets a real case study: problem → architecture (with an actual diagram: D
 
 1. **Student Management System**
    - Repo: https://github.com/Manu-code-all/StudentMarksCGPA-Java.git
-   - Java, OOP, Java Collections Framework
+   - Java, OOP, File I/O (flat-file persistence — verified; do not claim Java Collections Framework, not present in source)
    - Records marks, calculates GPA/CGPA, generates academic reports
 
 2. **Medicity** — static healthcare website

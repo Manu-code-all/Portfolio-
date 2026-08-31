@@ -10,7 +10,7 @@ Feature exactly these three projects, in this order:
 
 1. **Student Management System**
    - Repository: `https://github.com/Manu-code-all/StudentMarksCGPA-Java.git`
-   - Known stack: Java, OOP, Java Collections Framework
+   - Verified stack: Java, OOP, File I/O (flat-file persistence — see `docs/evidence/PROJECT_SOURCE_NOTES.md`; do not claim Java Collections Framework, it is not present in the source)
    - Known capabilities: records marks, calculates GPA/CGPA, and generates academic reports.
 2. **Medicity**
    - Repository: `https://github.com/Manu-code-all/Medicity.git`

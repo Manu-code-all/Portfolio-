@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manu Gupta — Portfolio (States Reference)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    line-height: var(--leading-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  a { color: inherit; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  .container { max-width: var(--content-max-width); margin-inline: auto; padding-inline: var(--gutter); }
+
+  .page-header { border-bottom: 1px solid var(--color-border); padding-block: var(--space-6); }
+  .page-header .eyebrow {
+    font-family: var(--font-mono); font-size: var(--font-size-small); color: var(--color-accent);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--space-3); display: block;
+  }
+  .page-header h1 {
+    font-size: var(--font-size-h2); font-weight: var(--weight-display-bold); letter-spacing: var(--tracking-display);
+  }
+  .page-header p.lede { margin-top: var(--space-3); color: var(--color-text-muted); max-width: var(--measure-max); }
+  .page-header .back-link { display: inline-block; margin-top: var(--space-4); font-family: var(--font-mono); font-size: var(--font-size-small); color: var(--color-accent); text-decoration: none; border-bottom: 1px solid var(--color-accent); }
+
+  .demo-section { padding-block: var(--space-7); border-bottom: 1px solid var(--color-border); }
+  .demo-section h2 { font-size: var(--font-size-h3); font-weight: var(--weight-display-semibold); }
+  .demo-section .demo-note { color: var(--color-text-muted); margin-top: var(--space-2); max-width: var(--measure-max); }
+
+  .demo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-top: var(--space-5); }
+  @media (max-width: 767.98px) { .demo-pair { grid-template-columns: 1fr; } }
+
+  .demo-card { border: 1px solid var(--color-border); border-radius: var(--radius-control); overflow: hidden; }
+  .demo-card-label {
+    font-family: var(--font-mono); font-size: var(--font-size-small); color: var(--color-text-muted);
+    padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-border); background: var(--color-surface);
+  }
+  .demo-card-body { padding: var(--space-4); }
+
+  /* ---------------- project row (mirrors index.html component) ---------------- */
+  .tag-list { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+  .tag {
+    font-family: var(--font-mono); font-size: var(--font-size-small); color: var(--color-text-muted);
+    border: 1px solid var(--color-border); border-radius: var(--radius-control); padding: var(--space-1) var(--space-2); line-height: 1;
+  }
+  .project-toggle {
+    width: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+    background: transparent; border: none; border-bottom: 1px solid var(--color-border); color: inherit; text-align: left;
+    font: inherit; cursor: pointer; padding-block: var(--space-4);
+    transition: border-color var(--duration-micro) var(--ease-out-expo);
+  }
+  .project-title {
+    font-size: var(--font-size-h3); font-weight: var(--weight-display-semibold); letter-spacing: var(--tracking-display);
+    transition: color var(--duration-micro) var(--ease-out-expo);
+  }
+  .project-oneliner { color: var(--color-text-muted); margin-top: var(--space-1); }
+  .disclosure-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; }
+  .disclosure-icon::before, .disclosure-icon::after {
+    content: ""; position: absolute; background: var(--color-text-muted); top: 50%; left: 50%;
+    transition: transform var(--duration-micro) var(--ease-out-expo);
+  }
+  .disclosure-icon::before { width: 12px; height: 2px; transform: translate(-50%, -50%); }
+  .disclosure-icon::after { width: 2px; height: 12px; transform: translate(-50%, -50%); }
+  .project-toggle[aria-expanded="true"] .disclosure-icon::after { transform: translate(-50%, -50%) rotate(90deg) scaleX(0); }
+  .project-toggle[aria-expanded="true"] .disclosure-icon::before { background: var(--color-accent); }
+  .project-detail { padding-top: var(--space-4); padding-bottom: var(--space-2); max-width: var(--measure-max); }
+  .project-detail[hidden] { display: none; }
+  .project-detail h4 { font-family: var(--font-body); font-weight: 700; font-size: var(--font-size-body); margin: 0 0 var(--space-2); }
+  .project-detail p { color: var(--color-text-muted); }
+
+  /* Real hover (mouse-driven) */
+  .project-toggle:hover { border-bottom-color: var(--color-text-muted); }
+  .project-toggle:hover .project-title { color: var(--color-accent); }
+  /* Forced-hover demo class — identical ruleset to :hover, applied permanently so the
+     state is visible in a static screenshot without a live cursor */
+  .demo-force-hover .project-toggle,
+  .project-toggle.demo-force-hover { border-bottom-color: var(--color-text-muted); }
+  .demo-force-hover .project-title,
+  .project-toggle.demo-force-hover .project-title { color: var(--color-accent); }
+
+  /* ---------------- buttons + links (mirrors index.html component) ---------------- */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: var(--space-2); background: var(--color-accent); color: var(--color-on-accent);
+    font-family: var(--font-body); font-weight: 700; font-size: var(--font-size-body); text-decoration: none;
+    padding: var(--space-2) var(--space-4); border: none; border-radius: var(--radius-control); cursor: pointer;
+    transition: transform var(--duration-micro) var(--ease-out-expo), background-color var(--duration-micro) var(--ease-out-expo);
+  }
+  .btn-primary:hover { background: var(--color-accent-hover); transform: translateY(-1px); }
+  .btn-primary:focus-visible { outline: 2px solid var(--color-text); outline-offset: 2px; }
+  /* Forced focus-visible demo (real :focus-visible ring can't be captured in a
+     static screenshot — this class applies the identical outline declarations) */
+  .demo-force-focus.btn-primary { outline: 2px solid var(--color-text); outline-offset: 2px; }
+
+  .text-link {
+    font-family: var(--font-body); color: var(--color-accent); text-decoration: none;
+    border-bottom: 1px solid transparent; transition: border-color var(--duration-micro) var(--ease-out-expo);
+  }
+  .text-link:hover { border-color: var(--color-accent); }
+  .text-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: var(--radius-control); }
+  .demo-force-focus.text-link { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: var(--radius-control); }
+
+  .demo-instruction {
+    font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted); margin-top: var(--space-2); display: block;
+  }
+
+  /* ---------------- mobile nav frame (simulates a 375px viewport) ---------------- */
+  .phone-frame {
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-control);
+    overflow: hidden;
+    background: var(--color-bg);
+  }
+  .phone-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--space-3); border-bottom: 1px solid var(--color-border);
+  }
+  .phone-wordmark { font-family: var(--font-display); font-weight: var(--weight-display-bold); font-size: 0.9375rem; }
+  .phone-nav-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border: 1px solid var(--color-border); border-radius: var(--radius-control);
+    background: transparent; position: relative;
+  }
+  .phone-nav-toggle-bars { position: relative; width: 16px; height: 11px; }
+  .phone-nav-toggle-bars span { position: absolute; left: 0; width: 100%; height: 2px; background: var(--color-text); transition: transform var(--duration-micro) var(--ease-out-expo), opacity var(--duration-micro) var(--ease-out-expo), top var(--duration-micro) var(--ease-out-expo); }
+  .phone-nav-toggle-bars span:nth-child(1) { top: 0; }
+  .phone-nav-toggle-bars span:nth-child(2) { top: 4.5px; }
+  .phone-nav-toggle-bars span:nth-child(3) { top: 9px; }
+  .phone-nav-toggle.is-open .phone-nav-toggle-bars span:nth-child(1) { top: 4.5px; transform: rotate(45deg); }
+  .phone-nav-toggle.is-open .phone-nav-toggle-bars span:nth-child(2) { opacity: 0; }
+  .phone-nav-toggle.is-open .phone-nav-toggle-bars span:nth-child(3) { top: 4.5px; transform: rotate(-45deg); }
+  .phone-menu { padding: var(--space-3); }
+  .phone-menu ul { display: flex; flex-direction: column; gap: var(--space-1); }
+  .phone-menu a { display: block; padding-block: var(--space-2); font-size: 0.9375rem; color: var(--color-text); text-decoration: none; }
+  .phone-menu .btn-primary { margin-top: var(--space-2); width: 100%; justify-content: center; font-size: var(--font-size-small); padding: var(--space-2) var(--space-3); }
+  .phone-body-preview { padding: var(--space-4) var(--space-3); color: var(--color-text-muted); font-size: var(--font-size-small); }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="container">
+    <span class="eyebrow">States reference</span>
+    <h1>Component states — Manu Gupta portfolio wireframe</h1>
+    <p class="lede">Companion strip to <code>index.html</code>. Shows the interactive states called out in <code>docs/DESIGN.md</code> §5 (component inventory) that a single static screenshot of the main page can't capture: disclosure open/closed, mobile nav open/closed, and focus-visible / hover on the accent-colored controls.</p>
+    <a class="back-link" href="index.html">← Back to index.html</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============== PROJECT ROW: collapsed vs expanded ============== -->
+  <section class="demo-section">
+    <div class="container">
+      <h2>Project row — collapsed vs. expanded</h2>
+      <p class="demo-note">The disclosure pattern from DESIGN.md §5 ("Project card / row"). Click either toggle below — both are fully functional, independent of index.html.</p>
+
+      <div class="demo-pair">
+        <div class="demo-card">
+          <p class="demo-card-label">collapsed (default)</p>
+          <div class="demo-card-body">
+            <button class="project-toggle" id="stateToggleCollapsed" aria-expanded="false" aria-controls="stateDetailCollapsed">
+              <span>
+                <span class="project-title">Student Management System</span>
+                <span class="project-oneliner">Records student marks, calculates CGPA, and generates academic reports via a Java console application.</span>
+                <span class="tag-list">
+                  <span class="tag">Java</span>
+                  <span class="tag">OOP</span>
+                  <span class="tag">File I/O</span>
+                </span>
+              </span>
+              <span class="disclosure-icon" aria-hidden="true"></span>
+            </button>
+            <div class="project-detail" id="stateDetailCollapsed" role="region" aria-labelledby="stateToggleCollapsed" hidden>
+              <h4>Problem</h4>
+              <p>Recording marks and computing CGPA by hand is slow and error-prone.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <p class="demo-card-label">expanded</p>
+          <div class="demo-card-body">
+            <button class="project-toggle" id="stateToggleExpanded" aria-expanded="true" aria-controls="stateDetailExpanded">
+              <span>
+                <span class="project-title">Student Management System</span>
+                <span class="project-oneliner">Records student marks, calculates CGPA, and generates academic reports via a Java console application.</span>
+                <span class="tag-list">
+                  <span class="tag">Java</span>
+                  <span class="tag">OOP</span>
+                  <span class="tag">File I/O</span>
+                </span>
+              </span>
+              <span class="disclosure-icon" aria-hidden="true"></span>
+            </button>
+            <div class="project-detail" id="stateDetailExpanded" role="region" aria-labelledby="stateToggleExpanded">
+              <h4>Problem</h4>
+              <p>Recording marks and computing CGPA by hand is slow and error-prone. This project gives an admin a console workflow to record marks and generate a report per student.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== PROJECT ROW: hover ============== -->
+  <section class="demo-section">
+    <div class="container">
+      <h2>Project row — hover</h2>
+      <p class="demo-note">DESIGN.md §5: "hover (Seam border brightens slightly)." Left card is live — hover it with a real cursor. Right card has the hover ruleset forced on with a <code>.demo-force-hover</code> class so the state is visible in a static screenshot.</p>
+
+      <div class="demo-pair">
+        <div class="demo-card">
+          <p class="demo-card-label">default (hover me)</p>
+          <div class="demo-card-body">
+            <button class="project-toggle" aria-expanded="false">
+              <span>
+                <span class="project-title">Medicity</span>
+                <span class="project-oneliner">A static, multi-page healthcare website with appointment, doctor, department, service, and shop pages.</span>
+              </span>
+              <span class="disclosure-icon" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <p class="demo-card-label">hover (forced for screenshot)</p>
+          <div class="demo-card-body">
+            <button class="project-toggle demo-force-hover" aria-expanded="false">
+              <span>
+                <span class="project-title">Medicity</span>
+                <span class="project-oneliner">A static, multi-page healthcare website with appointment, doctor, department, service, and shop pages.</span>
+              </span>
+              <span class="disclosure-icon" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FOCUS-VISIBLE: primary button + text link ============== -->
+  <section class="demo-section">
+    <div class="container">
+      <h2>Focus-visible — primary button &amp; text link</h2>
+      <p class="demo-note">DESIGN.md §5: primary button gets a "2px Bone ring offset"; text links get a visible focus outline too. Tab to the live controls to see the real <code>:focus-visible</code> ring, or look at the forced pair for a static reference.</p>
+
+      <div class="demo-pair">
+        <div class="demo-card">
+          <p class="demo-card-label">live (press Tab to focus)</p>
+          <div class="demo-card-body" style="display:flex; flex-direction:column; gap: var(--space-5);">
+            <div>
+              <a class="btn-primary" href="#state-noop">Download resume</a>
+              <span class="demo-instruction">real :focus-visible — tab to it</span>
+            </div>
+            <div>
+              <a class="text-link" href="#state-noop">View repository ↗</a>
+              <span class="demo-instruction">real :focus-visible — tab to it</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <p class="demo-card-label">focus-visible (forced for screenshot)</p>
+          <div class="demo-card-body" style="display:flex; flex-direction:column; gap: var(--space-5);">
+            <div>
+              <a class="btn-primary demo-force-focus" href="#state-noop" tabindex="-1">Download resume</a>
+              <span class="demo-instruction">ring: 2px solid Bone, 2px offset</span>
+            </div>
+            <div>
+              <a class="text-link demo-force-focus" href="#state-noop" tabindex="-1">View repository ↗</a>
+              <span class="demo-instruction">ring: 2px solid Signal Rust, 2px offset</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MOBILE NAV: closed vs open ============== -->
+  <section class="demo-section" style="border-bottom: none;">
+    <div class="container">
+      <h2>Mobile nav — closed vs. open</h2>
+      <p class="demo-note">Below the 860px breakpoint the horizontal nav becomes a menu button (DESIGN.md §5: "Simple icon button, 44×44px minimum tap target ... icon morphs"). Both frames below are interactive — click the toggle.</p>
+
+      <div class="demo-pair">
+        <div class="demo-card">
+          <p class="demo-card-label">closed (default)</p>
+          <div class="demo-card-body">
+            <div class="phone-frame">
+              <div class="phone-header">
+                <span class="phone-wordmark">Manu Gupta</span>
+                <button class="phone-nav-toggle" id="phoneToggleClosed" aria-expanded="false" aria-controls="phoneMenuClosed" aria-label="Open menu">
+                  <span class="phone-nav-toggle-bars"><span></span><span></span><span></span></span>
+                </button>
+              </div>
+              <div class="phone-menu" id="phoneMenuClosed" hidden>
+                <ul>
+                  <li><a href="#state-noop">About</a></li>
+                  <li><a href="#state-noop">Projects</a></li>
+                  <li><a href="#state-noop">Skills</a></li>
+                  <li><a href="#state-noop">Achievements</a></li>
+                  <li><a href="#state-noop">Contact</a></li>
+                </ul>
+                <a class="btn-primary" href="#state-noop">Download resume</a>
+              </div>
+              <p class="phone-body-preview">Hero content underneath …</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <p class="demo-card-label">open</p>
+          <div class="demo-card-body">
+            <div class="phone-frame">
+              <div class="phone-header">
+                <span class="phone-wordmark">Manu Gupta</span>
+                <button class="phone-nav-toggle is-open" id="phoneToggleOpen" aria-expanded="true" aria-controls="phoneMenuOpen" aria-label="Close menu">
+                  <span class="phone-nav-toggle-bars"><span></span><span></span><span></span></span>
+                </button>
+              </div>
+              <div class="phone-menu" id="phoneMenuOpen">
+                <ul>
+                  <li><a href="#state-noop">About</a></li>
+                  <li><a href="#state-noop">Projects</a></li>
+                  <li><a href="#state-noop">Skills</a></li>
+                  <li><a href="#state-noop">Achievements</a></li>
+                  <li><a href="#state-noop">Contact</a></li>
+                </ul>
+                <a class="btn-primary" href="#state-noop">Download resume</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Trivial disclosure/menu toggles — mirrors index.html's behavior, scoped to this page.
+  document.querySelectorAll('[id^="stateToggle"]').forEach(function (btn) {
+    var panel = document.getElementById(btn.getAttribute('aria-controls'));
+    btn.addEventListener('click', function () {
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      panel.hidden = isOpen;
+    });
+  });
+
+  [['phoneToggleClosed', 'phoneMenuClosed'], ['phoneToggleOpen', 'phoneMenuOpen']].forEach(function (pair) {
+    var btn = document.getElementById(pair[0]);
+    var menu = document.getElementById(pair[1]);
+    btn.addEventListener('click', function () {
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      btn.classList.toggle('is-open', !isOpen);
+      btn.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+      menu.hidden = isOpen;
+    });
+  });
+</script>
+
+</body>
+</html>

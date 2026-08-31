@@ -19,10 +19,10 @@ export default function MedicityDiagram() {
         className="medicity-diagram-desktop"
         viewBox="0 0 580 170"
         role="img"
-        aria-labelledby="medicity-diagram-title"
+        aria-labelledby="medicity-diagram-title-desktop"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <title id="medicity-diagram-title">
+        <title id="medicity-diagram-title-desktop">
           Medicity static-page navigation and referenced client assets, with the
           Vercel root rewrite as deployment context.
         </title>
@@ -142,10 +142,10 @@ export default function MedicityDiagram() {
         className="medicity-diagram-mobile"
         viewBox="0 0 280 340"
         role="img"
-        aria-labelledby="medicity-diagram-title"
+        aria-labelledby="medicity-diagram-title-mobile"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <title id="medicity-diagram-title">
+        <title id="medicity-diagram-title-mobile">
           Medicity static-page navigation and referenced client assets, with the
           Vercel root rewrite as deployment context.
         </title>

@@ -24,7 +24,7 @@ export const projects: Project[] = [
     slug: "medicity",
     order: 2,
     title: "Medicity",
-    oneLiner: "A static multi-page healthcare website with appointment booking, doctor profiles, and service information.",
+    oneLiner: "A static multi-page healthcare website with appointment, doctor, and department pages.",
     problem:
       "Healthcare providers and patients need a professional online presence to browse services, view staff, and access contact information without the complexity of a full application backend.",
     architectureSummary:
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     implementationChoices: [
       "Static HTML architecture, avoiding database and backend logic while maintaining a professional multi-page structure for healthcare content.",
       "jQuery and a suite of client-side JavaScript libraries (plugins.js, main.js) to handle interactive elements without a server-side framework.",
-      "PHP mailer integration for contact form submissions, providing email delivery without a full application stack.",
+      "PHP mailer assets present in the codebase for email delivery, without a full application stack.",
     ],
     stack: ["HTML", "CSS/SCSS", "JavaScript/jQuery", "PHP mailer"],
     outcome:
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     title: "Job Portal Web App",
     oneLiner: "A full-stack web application for job postings, applications, and administrative workflows.",
     problem:
-      "Organizations need a platform where employers can post job openings, job seekers can search and apply, and administrators can manage the workflow—matching candidates with opportunities and tracking application progress.",
+      "Organizations need a platform where employers can post job openings, job seekers can apply, and administrators can manage the workflow.",
     architectureSummary:
       "A Maven-based Java web application following the MVC pattern: JSP pages provide the user interface, servlet controllers route requests and manage sessions, and a DAO layer handles data persistence via JDBC to MySQL. Role-based access controls (ADMIN, EMPLOYER, JOBSEEKER) govern workflows, and an audit log tracks administrative approvals.",
     implementationChoices: [
@@ -63,7 +63,7 @@ export const projects: Project[] = [
       "Maven",
     ],
     outcome:
-      "A working job portal that demonstrates multi-role web application design. Employers can post jobs, seekers can apply and track status, and administrators can review and approve or reject applications. The audit log shows all approvals tied to administrative actions.",
+      "A working job portal that demonstrates multi-role web application design. Employers can post jobs, seekers can apply, and administrators can review and approve or reject applications. The audit log shows all approvals tied to administrative actions.",
     repoUrl: "https://github.com/Manu-code-all/Job-Portal-Webapp-Java-final-project.git",
   },
 ];

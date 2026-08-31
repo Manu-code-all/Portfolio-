@@ -1,5 +1,3 @@
-'use client';
-
 /**
  * Student Management System Architecture Diagram
  *
@@ -19,10 +17,10 @@ export default function StudentManagementDiagram() {
         className="diagram-svg-desktop"
         viewBox="0 0 620 180"
         role="img"
-        aria-labelledby="sms-diagram-title"
+        aria-labelledby="sms-diagram-title-desktop"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <title id="sms-diagram-title">
+        <title id="sms-diagram-title-desktop">
           Student Management System data flow: admin input through validation to file storage, and lookup through calculation to console output.
         </title>
 
@@ -78,10 +76,10 @@ export default function StudentManagementDiagram() {
         className="diagram-svg-mobile"
         viewBox="0 0 300 340"
         role="img"
-        aria-labelledby="sms-diagram-title"
+        aria-labelledby="sms-diagram-title-mobile"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <title id="sms-diagram-title">
+        <title id="sms-diagram-title-mobile">
           Student Management System data flow: admin input through validation to file storage, and lookup through calculation to console output.
         </title>
 
@@ -112,15 +110,14 @@ export default function StudentManagementDiagram() {
         <line className="diagram-line-bright" x1="150" y1="166" x2="150" y2="186" strokeWidth="1.5" />
 
         <rect className="diagram-box" x="10" y="186" width="280" height="44" />
-        <text className="diagram-label-strong" x="150" y="205" textAnchor="middle">
+        <text className="diagram-label-strong" x="150" y="213" textAnchor="middle">
           Admission no. lookup
         </text>
-        <text className="diagram-label" x="150" y="221" textAnchor="middle" fontSize="10" />
 
         <line className="diagram-line" x1="150" y1="230" x2="150" y2="250" />
 
         <rect className="diagram-box" x="10" y="250" width="280" height="36" />
-        <text className="diagram-label-strong" x="150" y="272" textAnchor="middle" fontSize="10">
+        <text className="diagram-label-strong" x="150" y="272" textAnchor="middle">
           Marksheet.calculateCGPA()
         </text>
 

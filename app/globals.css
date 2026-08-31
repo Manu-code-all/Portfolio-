@@ -1,26 +1,254 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------
+   Design Tokens — Machine-Shop Minimal
+   Source: docs/DESIGN.md §2-8 + wireframe/tokens.css
+   Every value copied 1:1 from the approved source. No one-off hex/px.
+   --------------------------------------------------------------- */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---- Color — DESIGN.md §2 ---- */
+  --color-bg: #18160F;           /* Warm Graphite — page background */
+  --color-surface: #211E17;      /* Raised Graphite — card/panel surfaces */
+  --color-border: #3A352A;       /* Seam — borders, dividers, structural rules */
+  --color-text: #F2EEE3;         /* Bone — primary text */
+  --color-text-muted: #9B9484;   /* Worn Steel — secondary/muted text */
+  --color-accent: #C4692E;       /* Signal Rust — the one accent */
+  --color-accent-hover: #D97A3C; /* slight lift for hover, still rust family */
+  --color-danger: #C74A3E;       /* Caution — error semantics only, reserved */
+
+  /* Text-on-accent: dark ink (same hex as page bg) on the accent fill.
+     Bone-on-Rust measured ~3.35:1 (fails AA); ink-on-Rust measures ~4.66:1 (passes).
+     Also reads intentionally: button text is "cut from" the same dark
+     material as the page itself. See DESIGN.md §5. */
+  --color-on-accent: var(--color-bg);
+
+  /* ---- Typography — DESIGN.md §3 ---- */
+  --font-display: 'Red Hat Display', system-ui, sans-serif;
+  --font-body: 'Red Hat Text', system-ui, sans-serif;
+  --font-mono: 'Red Hat Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  --weight-display-heavy: 800;
+  --weight-display-bold: 700;
+  --weight-display-semibold: 600;
+  --weight-display-medium: 500;
+  --weight-body-medium: 500;
+  --weight-body-regular: 400;
+  --weight-mono-medium: 500;
+  --weight-mono-regular: 400;
+
+  --tracking-display: -0.02em;
+
+  /* Fluid scale */
+  --font-size-display: clamp(2.5rem, 5vw + 1rem, 4.25rem); /* H1 / hero name */
+  --font-size-h2: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);     /* section headings */
+  --font-size-h3: clamp(1.25rem, 1vw + 1rem, 1.5rem);       /* project/card titles */
+  --font-size-body: 1rem;      /* 16px minimum */
+  --font-size-small: 0.8125rem; /* tags, metadata, mono */
+
+  --leading-body: 1.6;
+  --leading-tight: 1.15;
+  --measure-max: 65ch;
+
+  /* ---- Spacing — DESIGN.md §4 (8px base, 4px tight) ---- */
+  --space-1: 0.25rem;  /* 4px  — tight/inline gaps only */
+  --space-2: 0.5rem;   /* 8px  */
+  --space-3: 1rem;     /* 16px */
+  --space-4: 1.5rem;   /* 24px */
+  --space-5: 2rem;     /* 32px */
+  --space-6: 3rem;     /* 48px */
+  --space-7: 4rem;     /* 64px */
+  --space-8: 6rem;     /* 96px */
+
+  --section-gap: clamp(3rem, 8vw, 6rem); /* vertical rhythm between major sections */
+  --content-max-width: 1200px;
+  --gutter: clamp(1rem, 5vw, 3rem);      /* 16px mobile -> 48px+ desktop */
+
+  /* ---- Radii — DESIGN.md §5 ---- */
+  --radius-control: 0.375rem; /* buttons — subtly rounded, no pill */
+  --radius-none: 0;           /* project rows use dividers, not boxed cards */
+
+  /* ---- Motion — DESIGN.md §6 ---- */
+  /* ease-out-expo character, no bounce/elastic/linear */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-micro: 150ms;   /* hover, focus */
+  --duration-section: 350ms; /* section reveals, 300-400ms max */
+  --stagger-step: 40ms;      /* per-item stagger within a section */
+
+  /* ---- Z-index — DESIGN.md §4 (semantic scale, never 999/9999) ---- */
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-overlay: 40;
+  --z-toast: 60;
+
+  /* ---- Touch targets ---- */
+  --touch-target-min: 44px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Tailwind v4 theme configuration — maps to design tokens above */
+  --colors-bg: var(--color-bg);
+  --colors-surface: var(--color-surface);
+  --colors-border: var(--color-border);
+  --colors-text: var(--color-text);
+  --colors-text-muted: var(--color-text-muted);
+  --colors-accent: var(--color-accent);
+  --colors-accent-hover: var(--color-accent-hover);
+  --colors-danger: var(--color-danger);
+  --colors-on-accent: var(--color-on-accent);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-5: var(--space-5);
+  --spacing-6: var(--space-6);
+  --spacing-7: var(--space-7);
+  --spacing-8: var(--space-8);
+
+  --radius-control: var(--radius-control);
+  --radius-none: var(--radius-none);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ---------------------------------------------------------------
+   Base / reset — consumes tokens only, no one-off hex/px values
+   --------------------------------------------------------------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-signal {
+    display: none;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-regular);
+  font-size: var(--font-size-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-text);
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+}
+
+ul, dl {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+dd {
+  margin: 0;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---------------------------------------------------------------
+   Utility classes
+   --------------------------------------------------------------- */
+
+.container {
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.measure {
+  max-width: var(--measure-max);
+}
+
+/* Visually-hidden but accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------------------------------------------------------------
+   Skip link
+   --------------------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: -100px;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-medium);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-control);
+  z-index: var(--z-toast);
+  transition: top var(--duration-micro) var(--ease-out-expo);
+}
+
+.skip-link:focus {
+  top: var(--space-3);
+}
+
+/* ---------------------------------------------------------------
+   Focus-visible — shared baseline
+   --------------------------------------------------------------- */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-control);
+}
+
+/* ---------------------------------------------------------------
+   Scroll margin for anchor offset (sticky header accommodation)
+   --------------------------------------------------------------- */
+
+[id] {
+  scroll-margin-top: var(--touch-target-min);
 }

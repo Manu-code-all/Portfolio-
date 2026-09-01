@@ -32,9 +32,32 @@ const redHatMono = Red_Hat_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://manu-gupta-portfolio.vercel.app"), // TODO: replace with production domain when T26 assigns one
   title: "Manu Gupta — Portfolio",
   description:
     "Manu Gupta — third-year B.Tech Computer Science student, Galgotia University. Projects, skills, achievements, resume.",
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: "Manu Gupta — Portfolio",
+    description:
+      "Manu Gupta — third-year B.Tech Computer Science student, Galgotia University. Projects, skills, achievements, resume.",
+    siteName: "Manu Gupta — Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Manu Gupta — Portfolio",
+    description:
+      "Manu Gupta — third-year B.Tech Computer Science student, Galgotia University. Projects, skills, achievements, resume.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

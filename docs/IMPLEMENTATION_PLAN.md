@@ -462,7 +462,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
   - Title/description reuse the wireframe's own copy (drop "(Wireframe)" suffix) — don't invent new marketing copy.
   - `openGraph.images` points at `/og-image.png`; canonical URL left as a clearly marked placeholder if the production domain isn't assigned yet — never a fake domain.
   - `sitemap.ts`/`robots.ts` use Next.js's typed file-convention exports.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T22 — Brand image assets (OG image + favicon)
 - Feature: `docs/IMPLEMENTATION_PLAN.md` repo structure + `docs/DESIGN.md` §8 bans

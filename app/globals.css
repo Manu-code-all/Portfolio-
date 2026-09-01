@@ -905,17 +905,6 @@ button:focus-visible {
   }
 }
 
-/* Responsive: About section single-column layout below tablet */
-@media (max-width: 859.98px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-facts {
-    margin-top: var(--space-2);
-  }
-}
-
 /* ---------------------------------------------------------------
    Responsive — tablet and below
    --------------------------------------------------------------- */
@@ -1013,6 +1002,7 @@ h2.section-heading {
   font-family: var(--font-mono);
   font-size: var(--font-size-small);
   color: var(--color-text-muted);
+  min-width: 0;
 }
 
 .about-facts dd {
@@ -1020,6 +1010,18 @@ h2.section-heading {
   font-weight: var(--weight-body-medium);
   font-size: var(--font-size-small);
   text-align: right;
+  min-width: 0;
+}
+
+/* Responsive: About section single-column layout below tablet */
+@media (max-width: 859.98px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-facts {
+    margin-top: var(--space-2);
+  }
 }
 
 @media (max-width: 479.98px) {

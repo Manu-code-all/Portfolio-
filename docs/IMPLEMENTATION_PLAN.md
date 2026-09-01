@@ -205,7 +205,7 @@ Phase 4 is complete when this plan is approved. Implementation begins only after
 
 ## Tasks
 
-Status: executing · Progress: 22/26 tasks
+Status: executing · Progress: 24/26 tasks
 
 Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens, resume asset) are the only things everything else needs and have zero file overlap, so they run in parallel. T05/T06/T14/T16–T18 (UI primitives, content data, all three diagrams) again only need T02/T03 and touch disjoint files — a second wide parallel window, front-loading the highest-scrutiny work (fact-checked project diagrams) early rather than last. T07→T08 is a deliberately narrow, sequential walking skeleton (Hero only) that proves the full pipeline — scaffold, tokens, types, content, one real component, production build, resume asset serving — before fanning out to the other five sections and header/footer in parallel (T09–T13, T15). T19 is the first real convergence point (projects + all 3 diagrams). T20 is the second, full-scope build checkpoint. T21–T26 are metadata → QA → performance → deploy, each gated on the previous.
 
@@ -499,7 +499,9 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
   - Manual pass at 375px/768px/1440px per section — no horizontal scroll, no clipped/overlapping content.
   - Keyboard-only pass through the entire page in order, visible focus at every stop.
   - `prefers-reduced-motion: reduce` emulated — reveals instant, hero signal hidden.
-- Status: [ ] pending
+- Status: [x] done
+
+**Findings (fixed 2026-09-01):** (1) real horizontal overflow at 375px — `.about-facts .fact-row` is a flex row (`justify-content: space-between`) whose `dt`/`dd` children defaulted to `min-width: auto`, blocking wrap; fixed with `min-width: 0` on both. (2) a genuine cascade-order bug: the `.about-grid` single-column mobile override (`@media (max-width: 859.98px)`) sat *before* the unconditional desktop `.about-grid { grid-template-columns: 3fr 2fr; }` rule in source order — equal specificity means the later, unconditional rule always won regardless of viewport, so the mobile override had silently never applied at any width since it was written. Moved the override to after the base rule. Both independently verified via `document.documentElement.scrollWidth` at 375/768/1440px (no overflow at any) and a fresh screenshot showing the facts list stacking correctly on mobile. Lint down to 0 warnings (removed one unused import in `ProjectCard.tsx`). Keyboard focus-visible outline confirmed live via computed style (`outline-style: solid`, accent color) on both a nav link and a project toggle button. `prefers-reduced-motion: reduce` block confirmed correct by reading `globals.css` directly (universal animation/transition kill + explicit `.hero-signal { display: none }`, with no later conflicting `display` rule for that selector).
 
 ### T25 — Lighthouse mobile performance pass
 - Feature: `docs/PRD.md` §6/§8 (Lighthouse mobile Performance ≥90)

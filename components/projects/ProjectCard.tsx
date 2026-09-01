@@ -2,7 +2,6 @@
 
 import { useState, ReactNode } from 'react';
 import type { Project } from '@/lib/types';
-import { ExternalLink } from '@/components/ui/ExternalLink';
 import { ProjectDetail } from './ProjectDetail';
 
 interface ProjectCardProps {

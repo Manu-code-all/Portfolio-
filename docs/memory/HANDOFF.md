@@ -73,14 +73,18 @@ Sonnet review then found 2 more real bugs, both fixed and independently re-verif
 
 **T21 done (2026-09-01, same session).** Metadata (OpenGraph/Twitter tags + metadataBase placeholder pointing at a Vercel-subdomain-style URL, flagged for T26 to confirm), `app/sitemap.ts`, `app/robots.ts`. Caught and fixed one real bug: `sitemap.ts` initially used a relative `url: "/"` — Next.js auto-resolves relative URLs against `metadataBase` for layout.tsx's `Metadata` object, but NOT for the separate `sitemap.ts` file-convention route, so the live `/sitemap.xml` came back with an invalid `<loc>/</loc>` (sitemaps.org requires absolute URLs). Fixed by hardcoding the same placeholder base URL. Independent architect review of the full diff: PASS, no further findings.
 
-**22 of 26 tasks done.** Remaining: T23 (optional content/link validation test), T24 (accessibility/responsive/QA pass), T25 (Lighthouse mobile performance), T26 (Vercel deployment + live verification).
+**T23 done (2026-09-01, same session, user confirmed continue).** `tests/content-links.test.ts` using Node's built-in `node:test`/`node:assert` (plus `tsx` as a minimal dev-dependency TS-execution shim — no test framework added). Asserts profile links + project repo URLs against `docs/DISCOVERY.md` §9/§7 (parsed live, not duplicated as hardcoded strings, so it can't drift), `resumePdfPath === "/resume.pdf"`, and project `order` values are exactly {1,2,3}. Coder proved the test can actually fail (deliberately broke one assertion, watched it fail, reverted). Independently re-run by the orchestrator: all 4 pass for real.
+
+**T24 done (2026-09-01, same session).** Orchestrator-run QA pass (per plan: integration-only, not a Haiku dispatch) — lint, tsc, build, 3-breakpoint responsive check, keyboard-focus check, reduced-motion check. Found and fixed 2 real bugs invisible to every prior task: (1) horizontal overflow at 375px from a flexbox `min-width: auto` default blocking `dt`/`dd` text wrap in the About facts list; (2) a genuine CSS cascade-order bug — the `.about-grid` mobile single-column override was declared *before* the unconditional desktop rule in source order, so at equal specificity the later (desktop) rule always won and the mobile override had silently never applied at any viewport since it was written. Also removed one unused-import lint warning. All verified live: zero horizontal overflow at 375/768/1440px, focus-visible outline confirmed via computed style on both a nav link and a project toggle, reduced-motion CSS block confirmed correct by source read (no conflicting later `display` rule for `.hero-signal`).
+
+**24 of 26 tasks done.** Remaining: T25 (Lighthouse mobile performance, orchestrator-run against `next build && next start`), T26 (Vercel deployment + live verification — requires the user's own Vercel account/GitHub connection, cannot be completed autonomously).
 
 ## Next action
 
-Check with the user whether to continue with T23+ this session or stop for the day, per the pacing constraint — do not auto-chain into T23-T26 without checking in first.
+T25 (Lighthouse) can run without the user. T26 will need the user to connect their own Vercel account/GitHub repo — flag this explicitly when reached rather than attempting it autonomously. Check with the user whether to continue with T25 this session or stop for the day, per the pacing constraint.
 
 ## Session resume prompt
 
 To resume in a fresh session, paste:
 
-"Continue the Manu Gupta Portfolio project in C:\Users\manug\Downloads\claud (mastermind workflow). Read docs/memory/HANDOFF.md and docs/memory/MEMORY.md first, then continue with T23 onward per docs/IMPLEMENTATION_PLAN.md."
+"Continue the Manu Gupta Portfolio project in C:\Users\manug\Downloads\claud (mastermind workflow). Read docs/memory/HANDOFF.md and docs/memory/MEMORY.md first, then continue with T25 onward per docs/IMPLEMENTATION_PLAN.md."

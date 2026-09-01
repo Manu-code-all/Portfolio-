@@ -63,14 +63,20 @@ Environment verified ready: Node v24.12.0, npm 11.6.2, npx present, clean repo (
 
 Review findings (all fixed): T10 had the same straight-vs-curly-apostrophe bug as T06 (third occurrence of this exact class — worth calling out explicitly in future coder prompts); T13 was missing `className="section-pad"` (would've collapsed vertical spacing once wired up); T09's CSS port had one harmless duplicate rule (deduped). T11, T12, T15 passed clean first try.
 
-**18 of 26 tasks done.** Every task through T18 is done and reviewed clean. Remaining: T19 (Projects wrapper — needs T14+T15+T16+T17+T18, all now done, so **T19 is the next unblocked task and the first real convergence point**), T20 (full page composition — the big one, wires every section into app/page.tsx), then T21-T26 (metadata, OG image, tests, QA pass, Lighthouse, deploy).
+**T19 done (2026-09-01, new session).** Projects section wrapper — maps each project's slug to its diagram component and renders the sorted project list. Review caught one invented-copy issue: an `label="Case Studies"` prop on `SectionHeading` that wasn't in the wireframe — removed.
+
+**T20 done (2026-09-01, same session).** Full page composition — `app/layout.tsx` now wraps every page with `SiteHeader`/`SiteFooter`, `app/page.tsx` composes Hero/About/Projects/Skills/Achievements. **This is the first point the entire site is wired together and viewable**, not just Hero. The coder added `'use client'` to all 3 diagram components for styled-jsx support — verified as genuinely necessary (not a band-aid) by reverting it and watching the build fail with a real Server/Client boundary error; T16-T18 had passed earlier only because those components were still unimported orphans at that point, so the bundler never enforced the boundary on them.
+
+Sonnet review then found 2 more real bugs, both fixed and independently re-verified: (1) heading hierarchy skipped a level (`<h2>Projects</h2>` → `<h4>Problem</h4>` with project titles as plain `<span>`s, no `<h3>` between) — fixed by promoting project titles to `<h3>`; (2) mounting all 3 diagrams' `<style jsx>` blocks simultaneously produced a reproducible React key-prop console warning — confirmed dev-mode-only (absent from production build) but fixed properly anyway by migrating all 3 diagrams' styles into `app/globals.css` as static classes and removing `'use client'` entirely, restoring them to proper server components. Verified: `tsc --noEmit` clean, `npm run build` clean, fresh browser console clean, `curl`-checked heading sequence h1→h2→h2→h3→h4 correct.
+
+**20 of 26 tasks done.** Remaining: T21-T26 (metadata/sitemap/robots, OG image/favicon, optional content-link tests, accessibility/responsive/QA pass, Lighthouse, Vercel deployment).
 
 ## Next action
 
-Dispatch T19 (Projects section wrapper) next — solo, not parallel, since it's a convergence point. After T19, T20 (full page composition) is the next major milestone: once that lands, the *entire* site is wired together and viewable for the first time, not just Hero. Recommend doing T19+T20 as their own focused session/chunk rather than bundling with more parallel work, given how much the last parallel batch stressed the environment. Check with user whether to continue or stop for the day, same as always.
+Show the user the running site (was mid-request when the last session's context ran out). Then, per the pacing constraint, check with the user whether to continue with T21+ this session or stop for the day — do not auto-chain into T21-T26 without checking in first.
 
-## Session ended early (token budget) — 2026-09-01
+## Session resume prompt
 
-User ran low on tokens mid-session, right after finishing the T09-T13/T15 batch (all committed and pushed, nothing left uncommitted). To resume, start a new conversation and paste:
+To resume in a fresh session, paste:
 
-"Continue the Manu Gupta Portfolio project in C:\Users\manug\Downloads\claud (mastermind workflow). Read docs/memory/HANDOFF.md and docs/memory/MEMORY.md first, then continue with T19 (Projects section wrapper) per docs/IMPLEMENTATION_PLAN.md."
+"Continue the Manu Gupta Portfolio project in C:\Users\manug\Downloads\claud (mastermind workflow). Read docs/memory/HANDOFF.md and docs/memory/MEMORY.md first, then continue with T21 onward per docs/IMPLEMENTATION_PLAN.md."

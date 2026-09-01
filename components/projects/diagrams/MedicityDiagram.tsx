@@ -1,5 +1,3 @@
-'use client';
-
 /**
  * Medicity Architecture Diagram
  *
@@ -15,7 +13,7 @@
 
 export default function MedicityDiagram() {
   return (
-    <figure>
+    <figure className="diagram-figure">
       {/* Desktop layout: horizontal flow diagram */}
       <svg
         className="medicity-diagram-desktop"
@@ -310,70 +308,6 @@ export default function MedicityDiagram() {
         context. No backend, data store, or recommendation logic is present in
         the source.
       </figcaption>
-
-      <style jsx>{`
-        figure {
-          margin: 0;
-        }
-
-        svg {
-          width: 100%;
-          height: auto;
-          display: block;
-          margin-bottom: var(--space-3);
-        }
-
-        .medicity-diagram-desktop {
-          display: block;
-        }
-
-        .medicity-diagram-mobile {
-          display: none;
-        }
-
-        @media (max-width: 639px) {
-          .medicity-diagram-desktop {
-            display: none;
-          }
-
-          .medicity-diagram-mobile {
-            display: block;
-          }
-        }
-
-        /* SVG styling — design tokens from globals.css */
-        :global(.diagram-box) {
-          fill: var(--color-surface);
-          stroke: var(--color-border);
-          stroke-width: 1;
-        }
-
-        :global(.diagram-line) {
-          stroke: var(--color-border);
-          stroke-width: 1;
-          fill: none;
-        }
-
-        :global(.diagram-label) {
-          fill: var(--color-text-muted);
-          font-family: var(--font-mono);
-          font-size: 11px;
-        }
-
-        :global(.diagram-label-strong) {
-          fill: var(--color-text);
-          font-family: var(--font-mono);
-          font-size: 11px;
-        }
-
-        figcaption {
-          color: var(--color-text-muted);
-          font-family: var(--font-body);
-          font-size: var(--font-size-small);
-          line-height: var(--leading-body);
-          max-width: var(--measure-max);
-        }
-      `}</style>
     </figure>
   );
 }

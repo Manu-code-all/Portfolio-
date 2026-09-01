@@ -99,7 +99,7 @@ export function ProjectCard({ project, diagram }: ProjectCardProps) {
             <PreviewIcon slug={project.slug} />
           </span>
           <span className="project-summary-text">
-            <span className="project-title">{project.title}</span>
+            <h3 className="project-title">{project.title}</h3>
             <span className="project-oneliner">{project.oneLiner}</span>
             <span className="tag-list">
               {project.stack.map((tag) => (

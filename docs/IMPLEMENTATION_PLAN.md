@@ -158,6 +158,8 @@ type SitePerson = {
 
 Keep client boundaries narrow. Do not mark the whole page or a static content section as a client component merely to support one interaction.
 
+**Diagram components, resolved (T20):** initially needed `'use client'` because they used `<style jsx>`, which requires a Client Component boundary — this only surfaced once T20 wired them into `Projects.tsx` → `app/page.tsx` (T16-T18's own build/tsc checks passed clean earlier because the components were still unimported orphans at that point). Resolved by migrating their `<style jsx>` blocks into `app/globals.css` as static classes (Student Management's generic `.diagram-svg-desktop`/`.diagram-svg-mobile` renamed to `.sms-diagram-desktop`/`.sms-diagram-mobile` to avoid colliding with the other two diagrams now that all three mount on the same page) and removing `'use client'` — restores them to the table's default (non-client), verified via a clean console check with all 3 mounted together.
+
 ## Accessibility and responsive checklist
 
 - One `h1` in Hero; all primary sections use `h2` headings in page order.
@@ -203,7 +205,7 @@ Phase 4 is complete when this plan is approved. Implementation begins only after
 
 ## Tasks
 
-Status: executing · Progress: 19/26 tasks
+Status: executing · Progress: 20/26 tasks
 
 Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens, resume asset) are the only things everything else needs and have zero file overlap, so they run in parallel. T05/T06/T14/T16–T18 (UI primitives, content data, all three diagrams) again only need T02/T03 and touch disjoint files — a second wide parallel window, front-loading the highest-scrutiny work (fact-checked project diagrams) early rather than last. T07→T08 is a deliberately narrow, sequential walking skeleton (Hero only) that proves the full pipeline — scaffold, tokens, types, content, one real component, production build, resume asset serving — before fanning out to the other five sections and header/footer in parallel (T09–T13, T15). T19 is the first real convergence point (projects + all 3 diagrams). T20 is the second, full-scope build checkpoint. T21–T26 are metadata → QA → performance → deploy, each gated on the previous.
 
@@ -448,7 +450,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
   - Layout wraps `<SiteHeader />`, `{children}`, `<SiteFooter />`; page composes Hero → About → Projects → Skills → Achievements exactly (Contact is `SiteFooter`, not a separate section).
   - Heading order `h1` → `h2` per section, no skipped levels.
   - `npm run build` succeeds, full page renders with no console errors — paste output.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T21 — Metadata, sitemap, robots
 - Feature: `docs/IMPLEMENTATION_PLAN.md` step 6 + "Performance and SEO checklist"

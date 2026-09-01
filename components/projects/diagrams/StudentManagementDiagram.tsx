@@ -1,5 +1,3 @@
-'use client';
-
 /**
  * Student Management System Architecture Diagram
  *
@@ -16,7 +14,7 @@ export default function StudentManagementDiagram() {
     <figure className="diagram-figure">
       {/* Desktop layout — two horizontal flows */}
       <svg
-        className="diagram-svg-desktop"
+        className="sms-diagram-desktop"
         viewBox="0 0 620 180"
         role="img"
         aria-labelledby="sms-diagram-title-desktop"
@@ -75,7 +73,7 @@ export default function StudentManagementDiagram() {
 
       {/* Mobile layout — stacked flows */}
       <svg
-        className="diagram-svg-mobile"
+        className="sms-diagram-mobile"
         viewBox="0 0 300 340"
         role="img"
         aria-labelledby="sms-diagram-title-mobile"
@@ -135,48 +133,6 @@ export default function StudentManagementDiagram() {
         Admin input → validation → <code>students.txt</code>, and admission-number
         lookup → <code>Marksheet</code> calculation → console output.
       </figcaption>
-
-      <style jsx>{`
-        .diagram-figure {
-          margin: 0;
-          padding: 0;
-        }
-
-        .diagram-svg-desktop {
-          width: 100%;
-          height: auto;
-          display: block;
-        }
-
-        .diagram-svg-mobile {
-          display: none;
-        }
-
-        @media (max-width: 639px) {
-          .diagram-svg-desktop {
-            display: none;
-          }
-
-          .diagram-svg-mobile {
-            display: block;
-            width: 100%;
-            height: auto;
-          }
-        }
-
-        figcaption {
-          font-size: var(--font-size-body);
-          color: var(--color-text-muted);
-          font-family: var(--font-body);
-          margin-top: var(--space-3);
-          line-height: var(--leading-body);
-        }
-
-        code {
-          font-family: var(--font-mono);
-          color: var(--color-text);
-        }
-      `}</style>
     </figure>
   );
 }

@@ -1,5 +1,3 @@
-'use client';
-
 /**
  * Job Portal Web App Architecture Diagram
  *
@@ -17,7 +15,7 @@
 
 export default function JobPortalDiagram() {
   return (
-    <figure>
+    <figure className="diagram-figure">
       {/* Desktop layout: horizontal flow, roles/audit box below */}
       <svg
         className="jobportal-diagram-desktop"
@@ -140,50 +138,6 @@ export default function JobPortalDiagram() {
         <code>job_audit</code>). Admin approval actions run inside explicit
         commit/rollback with an audit record.
       </figcaption>
-
-      <style jsx>{`
-        figure {
-          margin: 0;
-        }
-
-        svg {
-          width: 100%;
-          height: auto;
-          display: block;
-          margin-bottom: var(--space-3);
-        }
-
-        .jobportal-diagram-desktop {
-          display: block;
-        }
-
-        .jobportal-diagram-mobile {
-          display: none;
-        }
-
-        @media (max-width: 639px) {
-          .jobportal-diagram-desktop {
-            display: none;
-          }
-
-          .jobportal-diagram-mobile {
-            display: block;
-          }
-        }
-
-        figcaption {
-          font-size: var(--font-size-small);
-          color: var(--color-text-muted);
-          line-height: var(--leading-body);
-          font-family: var(--font-body);
-        }
-
-        figcaption :global(code) {
-          font-family: var(--font-mono);
-          color: var(--color-text);
-          font-weight: var(--weight-mono-medium);
-        }
-      `}</style>
     </figure>
   );
 }

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://manu-gupta-portfolio.vercel.app/sitemap.xml", // TODO: update domain when T26 assigns production URL
+    sitemap: "https://portfolio-theta-ten-ez943ji5sr.vercel.app/sitemap.xml", // production domain, assigned by Vercel at T26 deploy
   };
 }

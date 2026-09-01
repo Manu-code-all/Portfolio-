@@ -32,7 +32,7 @@ const redHatMono = Red_Hat_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://manu-gupta-portfolio.vercel.app"), // TODO: replace with production domain when T26 assigns one
+  metadataBase: new URL("https://portfolio-theta-ten-ez943ji5sr.vercel.app"), // production domain, assigned by Vercel at T26 deploy
   title: "Manu Gupta — Portfolio",
   description:
     "Manu Gupta — third-year B.Tech Computer Science student, Galgotia University. Projects, skills, achievements, resume.",

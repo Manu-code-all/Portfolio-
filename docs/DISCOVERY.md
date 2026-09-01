@@ -10,7 +10,7 @@ A personal portfolio site for Manu Gupta to show when asked "let me see your wor
 - **Status:** 3rd-year B.Tech Computer Science student, Galgotia University, India (started Sept 2024)
 - **CGPA:** 7.7/10.0 (current)
 - **Experience:** Purely academic + personal/course projects. No internship or professional work experience yet.
-- **Field framing:** Developer with a systems-design interest. Explicitly **not** positioned as AI/ML-focused, even though one project has an AI component.
+- **Field framing:** Developer with a systems-design interest. Explicitly **not** positioned as AI/ML-focused.
 - **Coursework:** DSA, Computer Organization and Architecture, DBMS, Advanced Java
 
 ## 3. Positioning (important constraint)
@@ -44,13 +44,13 @@ Each gets a real case study: problem → architecture (with an actual diagram: D
 
 1. **Student Management System**
    - Repo: https://github.com/Manu-code-all/StudentMarksCGPA-Java.git
-   - Java, OOP, Java Collections Framework
+   - Java, OOP, File I/O (flat-file persistence — verified; do not claim Java Collections Framework, not present in source)
    - Records marks, calculates GPA/CGPA, generates academic reports
 
-2. **Medicity** — reframed around full-stack architecture, AI angle dropped/de-emphasized
+2. **Medicity** — static healthcare website
    - Repo: https://github.com/Manu-code-all/Medicity.git
-   - React.js, MongoDB, Express, Node.js
-   - Present as: full-stack MERN app with a recommendation/lookup engine — architecture and data flow are the story, not "AI-powered"
+   - HTML, CSS/SCSS, JavaScript/jQuery, PHP mailer asset
+   - Present as: a multi-page healthcare interface with appointment, doctor, department, service, shop, and contact pages. The site’s front-end structure and deployment configuration are the story; do not claim a backend, data store, AI, or recommendation engine.
 
 3. **Job-Portal-Web-App**
    - Repo: https://github.com/Manu-code-all/Job-Portal-Webapp-Java-final-project.git

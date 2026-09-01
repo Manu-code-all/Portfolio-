@@ -1,0 +1,96 @@
+/*
+  Design tokens — Manu Gupta Portfolio
+  Source of truth: docs/DESIGN.md ("Machine-Shop Minimal")
+  Every value below is copied 1:1 from DESIGN.md. Do not hand-edit a
+  one-off value in a page — add or adjust a token here instead.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700;800&family=Red+Hat+Text:wght@400;500&family=Red+Hat+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---- Color — DESIGN.md §2 ---- */
+  --color-bg: #18160F;           /* Warm Graphite — page background */
+  --color-surface: #211E17;      /* Raised Graphite — card/panel surfaces */
+  --color-border: #3A352A;       /* Seam — borders, dividers, structural rules */
+  --color-text: #F2EEE3;         /* Bone — primary text */
+  --color-text-muted: #9B9484;   /* Worn Steel — secondary/muted text */
+  --color-accent: #C4692E;       /* Signal Rust — the one accent */
+  --color-accent-hover: #D97A3C; /* slight lift for hover, still rust family */
+  --color-danger: #C74A3E;       /* Caution — error semantics only, reserved */
+
+  /* Text-on-accent: dark ink (same hex as page bg) on the accent fill.
+     Bone-on-Rust measured ~3.35:1 (fails AA); ink-on-Rust measures ~4.66:1 (passes).
+     Also reads intentionally: button text is "cut from" the same dark
+     material as the page itself. See DESIGN.md §5. */
+  --color-on-accent: var(--color-bg);
+
+  /* ---- Typography — DESIGN.md §3 ---- */
+  --font-display: 'Red Hat Display', system-ui, sans-serif;
+  --font-body: 'Red Hat Text', system-ui, sans-serif;
+  --font-mono: 'Red Hat Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  --weight-display-heavy: 800;
+  --weight-display-bold: 700;
+  --weight-display-semibold: 600;
+  --weight-display-medium: 500;
+  --weight-body-medium: 500;
+  --weight-body-regular: 400;
+  --weight-mono-medium: 500;
+  --weight-mono-regular: 400;
+
+  --tracking-display: -0.02em;
+
+  /* Fluid scale */
+  --font-size-display: clamp(2.5rem, 5vw + 1rem, 4.25rem); /* H1 / hero name */
+  --font-size-h2: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);     /* section headings */
+  --font-size-h3: clamp(1.25rem, 1vw + 1rem, 1.5rem);       /* project/card titles */
+  --font-size-body: 1rem;      /* 16px minimum */
+  --font-size-small: 0.8125rem; /* tags, metadata, mono */
+
+  --leading-body: 1.6;
+  --leading-tight: 1.15;
+  --measure-max: 65ch;
+
+  /* ---- Spacing — DESIGN.md §4 (8px base, 4px tight) ---- */
+  --space-1: 0.25rem;  /* 4px  — tight/inline gaps only */
+  --space-2: 0.5rem;   /* 8px  */
+  --space-3: 1rem;     /* 16px */
+  --space-4: 1.5rem;   /* 24px */
+  --space-5: 2rem;     /* 32px */
+  --space-6: 3rem;     /* 48px */
+  --space-7: 4rem;     /* 64px */
+  --space-8: 6rem;     /* 96px */
+
+  --section-gap: clamp(3rem, 8vw, 6rem); /* vertical rhythm between major sections */
+  --content-max-width: 1200px;
+  --gutter: clamp(1rem, 5vw, 3rem);      /* 16px mobile -> 48px+ desktop */
+
+  /* ---- Radii — DESIGN.md §5 ---- */
+  --radius-control: 0.375rem; /* buttons — subtly rounded, no pill */
+  --radius-none: 0;           /* project rows use dividers, not boxed cards */
+
+  /* ---- Elevation ---- */
+  /* No drop-shadow cards in this system (impeccable: "cards are the lazy
+     answer") — structure comes from --color-border dividers instead. */
+
+  /* ---- Motion — DESIGN.md §6 ---- */
+  /* ease-out-expo character, no bounce/elastic/linear */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-micro: 150ms;   /* hover, focus */
+  --duration-section: 350ms; /* section reveals, 300-400ms max */
+  --stagger-step: 40ms;      /* per-item stagger within a section */
+
+  /* ---- Z-index — DESIGN.md §4 (semantic scale, never 999/9999) ---- */
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-overlay: 40;
+  --z-toast: 60;
+
+  /* ---- Touch targets ---- */
+  --touch-target-min: 44px;
+}
+
+/* prefers-reduced-motion is honored at the component level in index.html /
+   index-states.html: every transition/animation declared with the tokens
+   above is paired with a `@media (prefers-reduced-motion: reduce)` override
+   that removes translate and shortens duration to ~1ms. */

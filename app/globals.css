@@ -1,0 +1,1119 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   Design Tokens — Machine-Shop Minimal
+   Source: docs/DESIGN.md §2-8 + wireframe/tokens.css
+   Every value copied 1:1 from the approved source. No one-off hex/px.
+   --------------------------------------------------------------- */
+
+:root {
+  /* ---- Color — DESIGN.md §2 ---- */
+  --color-bg: #18160F;           /* Warm Graphite — page background */
+  --color-surface: #211E17;      /* Raised Graphite — card/panel surfaces */
+  --color-border: #3A352A;       /* Seam — borders, dividers, structural rules */
+  --color-text: #F2EEE3;         /* Bone — primary text */
+  --color-text-muted: #9B9484;   /* Worn Steel — secondary/muted text */
+  --color-accent: #C4692E;       /* Signal Rust — the one accent */
+  --color-accent-hover: #D97A3C; /* slight lift for hover, still rust family */
+  --color-danger: #C74A3E;       /* Caution — error semantics only, reserved */
+
+  /* Text-on-accent: dark ink (same hex as page bg) on the accent fill.
+     Bone-on-Rust measured ~3.35:1 (fails AA); ink-on-Rust measures ~4.66:1 (passes).
+     Also reads intentionally: button text is "cut from" the same dark
+     material as the page itself. See DESIGN.md §5. */
+  --color-on-accent: var(--color-bg);
+
+  /* ---- Typography — DESIGN.md §3 ----
+     Reference next/font's self-hosted generated font vars (set on <html>
+     in app/layout.tsx) — next/font's generated family name won't match a
+     literal 'Red Hat Display' string, so this must go through the var. */
+  --font-display: var(--font-red-hat-display), system-ui, sans-serif;
+  --font-body: var(--font-red-hat-text), system-ui, sans-serif;
+  --font-mono: var(--font-red-hat-mono), ui-monospace, 'SFMono-Regular', monospace;
+
+  --weight-display-heavy: 800;
+  --weight-display-bold: 700;
+  --weight-display-semibold: 600;
+  --weight-display-medium: 500;
+  --weight-body-medium: 500;
+  --weight-body-regular: 400;
+  --weight-mono-medium: 500;
+  --weight-mono-regular: 400;
+
+  --tracking-display: -0.02em;
+
+  /* Fluid scale */
+  --font-size-display: clamp(2.5rem, 5vw + 1rem, 4.25rem); /* H1 / hero name */
+  --font-size-h2: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);     /* section headings */
+  --font-size-h3: clamp(1.25rem, 1vw + 1rem, 1.5rem);       /* project/card titles */
+  --font-size-body: 1rem;      /* 16px minimum */
+  --font-size-small: 0.8125rem; /* tags, metadata, mono */
+
+  --leading-body: 1.6;
+  --leading-tight: 1.15;
+  --measure-max: 65ch;
+
+  /* ---- Spacing — DESIGN.md §4 (8px base, 4px tight) ---- */
+  --space-1: 0.25rem;  /* 4px  — tight/inline gaps only */
+  --space-2: 0.5rem;   /* 8px  */
+  --space-3: 1rem;     /* 16px */
+  --space-4: 1.5rem;   /* 24px */
+  --space-5: 2rem;     /* 32px */
+  --space-6: 3rem;     /* 48px */
+  --space-7: 4rem;     /* 64px */
+  --space-8: 6rem;     /* 96px */
+
+  --section-gap: clamp(3rem, 8vw, 6rem); /* vertical rhythm between major sections */
+  --content-max-width: 1200px;
+  --gutter: clamp(1rem, 5vw, 3rem);      /* 16px mobile -> 48px+ desktop */
+
+  /* ---- Radii — DESIGN.md §5 ---- */
+  --radius-control: 0.375rem; /* buttons — subtly rounded, no pill */
+  --radius-none: 0;           /* project rows use dividers, not boxed cards */
+
+  /* ---- Motion — DESIGN.md §6 ---- */
+  /* ease-out-expo character, no bounce/elastic/linear */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-micro: 150ms;   /* hover, focus */
+  --duration-section: 350ms; /* section reveals, 300-400ms max */
+  --stagger-step: 40ms;      /* per-item stagger within a section */
+
+  /* ---- Z-index — DESIGN.md §4 (semantic scale, never 999/9999) ---- */
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-overlay: 40;
+  --z-toast: 60;
+
+  /* ---- Touch targets ---- */
+  --touch-target-min: 44px;
+}
+
+@theme inline {
+  /* Tailwind v4 theme configuration — maps to design tokens above.
+     Namespace must be singular --color-* (not --colors-*) or Tailwind
+     silently registers zero utility classes for it — no build error. */
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-border: var(--color-border);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-danger: var(--color-danger);
+  --color-on-accent: var(--color-on-accent);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-5: var(--space-5);
+  --spacing-6: var(--space-6);
+  --spacing-7: var(--space-7);
+  --spacing-8: var(--space-8);
+
+  --radius-control: var(--radius-control);
+  --radius-none: var(--radius-none);
+}
+
+/* ---------------------------------------------------------------
+   Base / reset — consumes tokens only, no one-off hex/px values
+   --------------------------------------------------------------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-signal {
+    display: none;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-regular);
+  font-size: var(--font-size-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-text);
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+}
+
+ul, dl {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+dd {
+  margin: 0;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---------------------------------------------------------------
+   Utility classes
+   --------------------------------------------------------------- */
+
+.container {
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.measure {
+  max-width: var(--measure-max);
+}
+
+/* Visually-hidden but accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------------------------------------------------------------
+   Skip link
+   --------------------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: -100px;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-medium);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-control);
+  z-index: var(--z-toast);
+  transition: top var(--duration-micro) var(--ease-out-expo);
+}
+
+.skip-link:focus {
+  top: var(--space-3);
+}
+
+/* ---------------------------------------------------------------
+   Focus-visible — shared baseline
+   --------------------------------------------------------------- */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-control);
+}
+
+/* ---------------------------------------------------------------
+   Button styles — .btn-primary and .btn-outline
+   --------------------------------------------------------------- */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--font-size-body);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  border-radius: var(--radius-control);
+  cursor: pointer;
+  transition: transform var(--duration-micro) var(--ease-out-expo),
+              background-color var(--duration-micro) var(--ease-out-expo);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-medium);
+  font-size: var(--font-size-body);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  transition: border-color var(--duration-micro) var(--ease-out-expo),
+              color var(--duration-micro) var(--ease-out-expo);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-text-muted);
+  color: var(--color-accent);
+}
+
+/* ---------------------------------------------------------------
+   Header / navigation — desktop and mobile
+   --------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display-bold);
+  font-size: 1.0625rem;
+  letter-spacing: var(--tracking-display);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: color var(--duration-micro) var(--ease-out-expo);
+}
+
+.wordmark:hover {
+  color: var(--color-accent);
+}
+
+.primary-nav {
+  display: none;
+}
+
+.primary-nav ul {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-medium);
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding-block: var(--space-1);
+  transition: color var(--duration-micro) var(--ease-out-expo);
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+}
+
+/* Note: current-section highlighting via .nav-link.is-current reserved
+   for Phase 8 if added. Requires aria-current="page" + underline. */
+.nav-link.is-current {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target-min);
+  height: var(--touch-target-min);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+  padding: 0;
+  transition: border-color var(--duration-micro) var(--ease-out-expo);
+}
+
+.nav-toggle:hover {
+  border-color: var(--color-text-muted);
+}
+
+.nav-toggle-bars {
+  position: relative;
+  width: 18px;
+  height: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nav-toggle-bars span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-text);
+  transition: transform var(--duration-micro) var(--ease-out-expo),
+              opacity var(--duration-micro) var(--ease-out-expo),
+              top var(--duration-micro) var(--ease-out-expo);
+}
+
+.nav-toggle-bars span:nth-child(1) {
+  top: 0;
+}
+
+.nav-toggle-bars span:nth-child(2) {
+  top: 5px;
+}
+
+.nav-toggle-bars span:nth-child(3) {
+  top: 10px;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(1) {
+  top: 5px;
+  transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars span:nth-child(3) {
+  top: 5px;
+  transform: rotate(-45deg);
+}
+
+.mobile-menu {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding: var(--space-4) var(--gutter) var(--space-5);
+}
+
+.mobile-menu[hidden] {
+  display: none;
+}
+
+.mobile-menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.mobile-menu .nav-link {
+  display: block;
+  padding-block: var(--space-2);
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.mobile-menu .btn-primary {
+  margin-top: var(--space-3);
+  width: 100%;
+  justify-content: center;
+}
+
+/* Desktop breakpoint: show desktop nav, hide mobile elements */
+@media (min-width: 860px) {
+  .primary-nav {
+    display: block;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Hero section — layout, typography, decorative graphic
+   --------------------------------------------------------------- */
+
+.hero {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-7);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-7);
+  align-items: center;
+  width: 100%;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-mono-medium);
+  font-size: var(--font-size-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.hero h1 {
+  font-size: var(--font-size-display);
+  font-weight: var(--weight-display-heavy);
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-4);
+}
+
+.hero-support {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  max-width: 42ch;
+  margin-bottom: var(--space-3);
+}
+
+.hero-context {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-5);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.hero-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.hero-links a {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--duration-micro) var(--ease-out-expo);
+}
+
+.hero-links a:hover {
+  border-color: var(--color-accent);
+}
+
+.hero-graphic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-graphic svg {
+  width: 100%;
+  height: auto;
+}
+
+.diagram-line {
+  stroke: var(--color-border);
+  stroke-width: 1;
+  fill: none;
+}
+
+.diagram-line-bright {
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  fill: none;
+}
+
+.diagram-dot {
+  fill: var(--color-accent);
+}
+
+.diagram-box {
+  fill: var(--color-surface);
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.diagram-label {
+  fill: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.diagram-label-strong {
+  fill: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+/* Hero graphic: one-time signal travelling A → B on load, then it's gone —
+   settles and stops, not a perpetual loop (DESIGN.md §6). */
+.hero-signal {
+  offset-path: path('M174,45 L194,45 L194,76 L214,76');
+  offset-rotate: 0deg;
+  animation: hero-signal-travel 2.6s cubic-bezier(0.16, 1, 0.3, 1) 1s 1 both;
+}
+
+@keyframes hero-signal-travel {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Scroll margin for anchor offset (sticky header accommodation)
+   --------------------------------------------------------------- */
+
+[id] {
+  scroll-margin-top: var(--space-8);
+}
+
+/* ---------------------------------------------------------------
+   Shared section styles — padding, headings, and introductory text
+   --------------------------------------------------------------- */
+
+.section-pad {
+  padding-block: var(--section-gap);
+}
+
+/* ---------------------------------------------------------------
+   Skills section — two-column grid and tag styling
+   --------------------------------------------------------------- */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+  margin-top: var(--space-5);
+}
+
+.skill-group h3 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--font-size-body);
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+  margin-top: 0;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-mono-regular);
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  padding: var(--space-1) var(--space-2);
+  line-height: 1;
+}
+
+/* ---------------------------------------------------------------
+   Project card + detail disclosure — layout, interaction, states
+   --------------------------------------------------------------- */
+
+.project-row {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  background: transparent;
+  border: none;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  padding-block: var(--space-5);
+  transition: border-color var(--duration-micro) var(--ease-out-expo);
+}
+
+.project-row:hover .project-toggle {
+  border-bottom-color: var(--color-text-muted);
+}
+
+.project-row:hover .project-title {
+  color: var(--color-accent);
+}
+
+.project-summary {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+}
+
+.project-summary-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-title {
+  font-size: var(--font-size-h3);
+  font-weight: var(--weight-display-semibold);
+  letter-spacing: var(--tracking-display);
+  transition: color var(--duration-micro) var(--ease-out-expo);
+}
+
+.project-oneliner {
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+  max-width: 56ch;
+}
+
+.project-preview {
+  flex-shrink: 0;
+  width: 84px;
+  height: 56px;
+}
+
+.project-preview svg {
+  width: 100%;
+  height: 100%;
+}
+
+.disclosure-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.disclosure-icon::before,
+.disclosure-icon::after {
+  content: "";
+  position: absolute;
+  background: var(--color-text-muted);
+  top: 50%;
+  left: 50%;
+  transition: transform var(--duration-micro) var(--ease-out-expo);
+}
+
+.disclosure-icon::before {
+  width: 12px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+}
+
+.disclosure-icon::after {
+  width: 2px;
+  height: 12px;
+  transform: translate(-50%, -50%);
+}
+
+.project-toggle[aria-expanded="true"] .disclosure-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg) scaleX(0);
+}
+
+.project-toggle[aria-expanded="true"] .disclosure-icon::before {
+  background: var(--color-accent);
+}
+
+.project-detail {
+  padding-bottom: var(--space-6);
+  max-width: var(--measure-max);
+}
+
+.project-detail[hidden] {
+  display: none;
+}
+
+.project-detail h4 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-2);
+}
+
+.project-detail h4:first-child {
+  margin-top: 0;
+}
+
+.project-detail ul.detail-list {
+  list-style: none;
+}
+
+.project-detail ul.detail-list li {
+  position: relative;
+  padding-left: var(--space-4);
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.project-detail ul.detail-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 5px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+.project-detail p {
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+}
+
+.diagram-figure {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  padding: var(--space-4);
+  margin: 0;
+  max-width: none;
+}
+
+.diagram-figure svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.diagram-figure figcaption {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.diagram-figure figcaption code {
+  font-family: var(--font-mono);
+  color: var(--color-text);
+  font-weight: var(--weight-mono-medium);
+}
+
+/* Per-diagram desktop/mobile SVG toggle — each diagram gets its own pair of
+   classes so all 3 can be mounted on the same page (Projects section)
+   without colliding. Moved here from per-component styled-jsx so these
+   components can stay server components (no 'use client' needed). */
+.sms-diagram-desktop,
+.medicity-diagram-desktop,
+.jobportal-diagram-desktop {
+  display: block;
+}
+
+.sms-diagram-mobile,
+.medicity-diagram-mobile,
+.jobportal-diagram-mobile {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .sms-diagram-desktop,
+  .medicity-diagram-desktop,
+  .jobportal-diagram-desktop {
+    display: none;
+  }
+
+  .sms-diagram-mobile,
+  .medicity-diagram-mobile,
+  .jobportal-diagram-mobile {
+    display: block;
+  }
+}
+
+/* Hide preview icon on mobile (≤860px) */
+@media (max-width: 859.98px) {
+  .project-preview {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Responsive — tablet and below
+   --------------------------------------------------------------- */
+
+@media (max-width: 859.98px) {
+  .hero {
+    min-height: auto;
+    padding-block: var(--space-6);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-graphic {
+    order: 2;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+
+  .hero-support {
+    max-width: 100%;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Section heading and layout — shared across About, Skills, etc.
+   --------------------------------------------------------------- */
+
+section {
+  scroll-margin-top: var(--space-8);
+}
+
+.section-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: var(--weight-mono-medium);
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-3);
+}
+
+h2.section-heading {
+  font-size: var(--font-size-h2);
+  font-weight: var(--weight-display-bold);
+  letter-spacing: var(--tracking-display);
+  margin-bottom: var(--space-2);
+}
+
+.section-intro {
+  color: var(--color-text-muted);
+  max-width: var(--measure-max);
+  margin-top: var(--space-2);
+}
+
+/* ---------------------------------------------------------------
+   About section — two-column layout, education facts
+   --------------------------------------------------------------- */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-7);
+}
+
+.about-narrative p + p {
+  margin-top: var(--space-3);
+}
+
+.about-facts {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
+  align-self: start;
+}
+
+.about-facts .fact-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-block: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-facts .fact-row:last-child {
+  border-bottom: none;
+}
+
+.about-facts dt {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  min-width: 0;
+}
+
+.about-facts dd {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-medium);
+  font-size: var(--font-size-small);
+  text-align: right;
+  min-width: 0;
+}
+
+/* Responsive: About section single-column layout below tablet */
+@media (max-width: 859.98px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-facts {
+    margin-top: var(--space-2);
+  }
+}
+
+@media (max-width: 479.98px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-outline {
+    justify-content: center;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Footer / contact — layout, typography
+   --------------------------------------------------------------- */
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--section-gap);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.site-footer h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--weight-display-bold);
+  letter-spacing: var(--tracking-display);
+  max-width: 18ch;
+}
+
+.footer-email {
+  margin-top: var(--space-4);
+  font-size: 1.125rem;
+}
+
+.footer-email a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+  transition: color var(--duration-micro) var(--ease-out-expo),
+              border-color var(--duration-micro) var(--ease-out-expo);
+}
+
+.footer-email a:hover {
+  color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.footer-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer-links a {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--duration-micro) var(--ease-out-expo);
+}
+
+.footer-links a:hover {
+  color: var(--color-accent);
+}
+
+.footer-resume {
+  margin-top: var(--space-4);
+}
+
+.footer-copyright {
+  margin-top: var(--space-7);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+}
+
+/* ---------------------------------------------------------------
+   Responsive — footer
+   --------------------------------------------------------------- */
+
+@media (max-width: 859.98px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+}

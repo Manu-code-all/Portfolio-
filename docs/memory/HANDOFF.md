@@ -69,14 +69,18 @@ Review findings (all fixed): T10 had the same straight-vs-curly-apostrophe bug a
 
 Sonnet review then found 2 more real bugs, both fixed and independently re-verified: (1) heading hierarchy skipped a level (`<h2>Projects</h2>` → `<h4>Problem</h4>` with project titles as plain `<span>`s, no `<h3>` between) — fixed by promoting project titles to `<h3>`; (2) mounting all 3 diagrams' `<style jsx>` blocks simultaneously produced a reproducible React key-prop console warning — confirmed dev-mode-only (absent from production build) but fixed properly anyway by migrating all 3 diagrams' styles into `app/globals.css` as static classes and removing `'use client'` entirely, restoring them to proper server components. Verified: `tsc --noEmit` clean, `npm run build` clean, fresh browser console clean, `curl`-checked heading sequence h1→h2→h2→h3→h4 correct.
 
-**20 of 26 tasks done.** Remaining: T21-T26 (metadata/sitemap/robots, OG image/favicon, optional content-link tests, accessibility/responsive/QA pass, Lighthouse, Vercel deployment).
+**T22 done (2026-09-01, new session, user asked to continue with T21).** T22 done first since T21 depends on it. Brand image assets: `public/og-image.png` (1200×630, blueprint-schematic graphic echoing the hero) and `app/icon.png` (512×512 geometric "M" mark), both built from real `globals.css` tokens via a committed generation script (`scripts/generate-og-image.mjs`, precedent: `assets/resume/create_resume.py`). Review caught a real false claim: the coder's first report said "Font: Red Hat Display" but the actual SVG used `font-family="Arial"` — sent back, fixed for real by fetching the actual Red Hat Display woff2 files from Google Fonts and embedding them as base64 `@font-face` in the SVG, verified by visually confirming the letterforms actually changed (not just re-trusting the second report).
+
+**T21 done (2026-09-01, same session).** Metadata (OpenGraph/Twitter tags + metadataBase placeholder pointing at a Vercel-subdomain-style URL, flagged for T26 to confirm), `app/sitemap.ts`, `app/robots.ts`. Caught and fixed one real bug: `sitemap.ts` initially used a relative `url: "/"` — Next.js auto-resolves relative URLs against `metadataBase` for layout.tsx's `Metadata` object, but NOT for the separate `sitemap.ts` file-convention route, so the live `/sitemap.xml` came back with an invalid `<loc>/</loc>` (sitemaps.org requires absolute URLs). Fixed by hardcoding the same placeholder base URL. Independent architect review of the full diff: PASS, no further findings.
+
+**22 of 26 tasks done.** Remaining: T23 (optional content/link validation test), T24 (accessibility/responsive/QA pass), T25 (Lighthouse mobile performance), T26 (Vercel deployment + live verification).
 
 ## Next action
 
-Show the user the running site (was mid-request when the last session's context ran out). Then, per the pacing constraint, check with the user whether to continue with T21+ this session or stop for the day — do not auto-chain into T21-T26 without checking in first.
+Check with the user whether to continue with T23+ this session or stop for the day, per the pacing constraint — do not auto-chain into T23-T26 without checking in first.
 
 ## Session resume prompt
 
 To resume in a fresh session, paste:
 
-"Continue the Manu Gupta Portfolio project in C:\Users\manug\Downloads\claud (mastermind workflow). Read docs/memory/HANDOFF.md and docs/memory/MEMORY.md first, then continue with T21 onward per docs/IMPLEMENTATION_PLAN.md."
+"Continue the Manu Gupta Portfolio project in C:\Users\manug\Downloads\claud (mastermind workflow). Read docs/memory/HANDOFF.md and docs/memory/MEMORY.md first, then continue with T23 onward per docs/IMPLEMENTATION_PLAN.md."

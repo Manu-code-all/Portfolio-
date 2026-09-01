@@ -5,6 +5,8 @@ import {
   Red_Hat_Mono,
 } from "next/font/google";
 import "./globals.css";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 
 /* Font loading — Machine-Shop Minimal design system (DESIGN.md §3)
    Self-hosted via next/font/google, not external CDN <link> tags */
@@ -45,7 +47,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

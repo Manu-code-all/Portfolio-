@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * Student Management System Architecture Diagram
  *

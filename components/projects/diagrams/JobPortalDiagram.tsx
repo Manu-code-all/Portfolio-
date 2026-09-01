@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * Job Portal Web App Architecture Diagram
  *

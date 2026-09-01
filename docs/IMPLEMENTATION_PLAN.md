@@ -485,7 +485,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
   - Use Node's built-in `node:test`/`node:assert` — don't add Vitest/Jest as a new dependency (project explicitly avoids unnecessary libraries).
   - Asserts: all content URLs match the `DISCOVERY.md` §9 canonical list, `resumePdfPath === "/resume.pdf"`, project `order` values are 1/2/3 with no gaps/dupes.
   - Explicitly skippable without blocking ship if the pacing schedule runs tight — note that in the status update rather than dropping it silently.
-- Status: [ ] pending
+- Status: [x] done
 
 ### T24 — Accessibility, responsive, lint/typecheck/build QA pass
 - Feature: `docs/IMPLEMENTATION_PLAN.md` "Accessibility and responsive checklist" + "Test and sign-off plan"

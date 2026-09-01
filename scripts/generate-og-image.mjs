@@ -23,6 +23,35 @@ const colors = {
   accent: '#C4692E',    // Signal Rust
 };
 
+// Real Red Hat Display font files (weights 500 + 800 — same weights used for
+// the role line and the name on the live site via next/font/google in
+// app/layout.tsx). Fetched from Google Fonts' CSS2 API and stored locally so
+// the OG image is reproducible without a network dependency at generation
+// time. Embedded into the SVG below as base64 @font-face so librsvg (which
+// sharp uses to rasterize SVG) actually renders the real glyphs instead of
+// silently falling back to a system sans-serif.
+const FONT_DIR = path.join(__dirname, 'fonts');
+const fontRegularB64 = fs
+  .readFileSync(path.join(FONT_DIR, 'RedHatDisplay-500.woff2'))
+  .toString('base64');
+const fontBoldB64 = fs
+  .readFileSync(path.join(FONT_DIR, 'RedHatDisplay-800.woff2'))
+  .toString('base64');
+
+const fontFaceStyle = `
+    <style>
+      @font-face {
+        font-family: 'Red Hat Display';
+        font-weight: 500;
+        src: url(data:font/woff2;base64,${fontRegularB64}) format('woff2');
+      }
+      @font-face {
+        font-family: 'Red Hat Display';
+        font-weight: 800;
+        src: url(data:font/woff2;base64,${fontBoldB64}) format('woff2');
+      }
+    </style>`;
+
 /**
  * Generate OG Image SVG (1200×630px)
  * Content: Name + role + blueprint-schematic graphic
@@ -30,21 +59,22 @@ const colors = {
 function generateOGImageSVG() {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>${fontFaceStyle}
+    <pattern id="grid-og" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.8" fill="${colors.border}" opacity="0.3"/>
+    </pattern>
+  </defs>
+
   <!-- Background -->
   <rect width="1200" height="630" fill="${colors.bg}"/>
 
   <!-- Left side: Name + role -->
-  <text x="60" y="280" font-size="72" font-weight="800" font-family="Arial, sans-serif" fill="${colors.text}" letter-spacing="-1.44">Manu Gupta</text>
-  <text x="60" y="360" font-size="36" font-weight="500" font-family="Arial, sans-serif" fill="${colors.accent}" letter-spacing="0.72">Software Developer</text>
+  <text x="60" y="280" font-size="72" font-weight="800" font-family="Red Hat Display" fill="${colors.text}" letter-spacing="-1.44">Manu Gupta</text>
+  <text x="60" y="360" font-size="36" font-weight="500" font-family="Red Hat Display" fill="${colors.accent}" letter-spacing="0.72">Software Developer</text>
 
   <!-- Right side: Blueprint-schematic graphic -->
   <g transform="translate(900, 315)">
     <!-- Blueprint grid background -->
-    <defs>
-      <pattern id="grid-og" width="20" height="20" patternUnits="userSpaceOnUse">
-        <circle cx="1" cy="1" r="0.8" fill="${colors.border}" opacity="0.3"/>
-      </pattern>
-    </defs>
     <rect x="-190" y="-190" width="380" height="380" fill="${colors.bg}"/>
     <rect x="-190" y="-190" width="380" height="380" fill="url(#grid-og)"/>
 
@@ -132,7 +162,7 @@ async function main() {
     console.log(`  Background: ${colors.bg}`);
     console.log(`  Accent: ${colors.accent}`);
     console.log(`  Text: ${colors.text}`);
-    console.log(`Font: Red Hat Display (weights 500, 600, 700, 800)\n`);
+    console.log(`Font: Red Hat Display (weights 500, 800) — real woff2 files embedded as base64 @font-face in the OG image SVG, rendered by librsvg\n`);
   } catch (error) {
     console.error('Error generating assets:', error);
     process.exit(1);

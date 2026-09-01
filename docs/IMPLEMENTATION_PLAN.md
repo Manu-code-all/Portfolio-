@@ -473,7 +473,7 @@ Build order rationale: T01 alone proves the toolchain. T02–T04 (types, tokens,
 - Review criteria:
   - No stock photography, no gradient, no AI/ML visual cue — built from the same tokens as the rest of the site, not a generic template.
   - Correct OG dimensions (1200×630), reasonable file size (must not regress T25's Lighthouse budget).
-- Status: [ ] pending
+- Status: [x] done
 
 ### T23 — Content/link validation test (optional, time-permitting)
 - Feature: `docs/IMPLEMENTATION_PLAN.md` repo structure (`tests/content-links.test.ts`) — cross-cutting, no dedicated feature doc

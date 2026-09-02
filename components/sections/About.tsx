@@ -1,4 +1,5 @@
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { Reveal } from '@/components/ui/Reveal';
 import { profile } from '@/content/profile';
 
 /**
@@ -14,7 +15,7 @@ export function About() {
   return (
     <section className="section-pad" id="about">
       <div className="container about-grid">
-        <div className="about-narrative">
+        <Reveal className="about-narrative">
           <SectionHeading label="ABOUT">
             {profile.headline}
           </SectionHeading>
@@ -30,26 +31,28 @@ export function About() {
               {para}
             </p>
           ))}
-        </div>
+        </Reveal>
 
-        <dl className="about-facts">
-          <div className="fact-row">
-            <dt>Institution</dt>
-            <dd>{education.institution}</dd>
-          </div>
-          <div className="fact-row">
-            <dt>Degree</dt>
-            <dd>{education.degree}</dd>
-          </div>
-          <div className="fact-row">
-            <dt>Timeline</dt>
-            <dd>{education.dates}</dd>
-          </div>
-          <div className="fact-row">
-            <dt>Current CGPA</dt>
-            <dd>{education.cgpa}</dd>
-          </div>
-        </dl>
+        <Reveal delay={0.12}>
+          <dl className="about-facts glass-surface">
+            <div className="fact-row">
+              <dt>Institution</dt>
+              <dd>{education.institution}</dd>
+            </div>
+            <div className="fact-row">
+              <dt>Degree</dt>
+              <dd>{education.degree}</dd>
+            </div>
+            <div className="fact-row">
+              <dt>Timeline</dt>
+              <dd>{education.dates}</dd>
+            </div>
+            <div className="fact-row">
+              <dt>Current CGPA</dt>
+              <dd>{education.cgpa}</dd>
+            </div>
+          </dl>
+        </Reveal>
       </div>
     </section>
   );

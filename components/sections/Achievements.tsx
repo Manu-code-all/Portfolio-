@@ -1,4 +1,5 @@
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { Reveal } from '@/components/ui/Reveal';
 import { achievements } from '@/content/achievements';
 
 /**
@@ -20,43 +21,45 @@ export function Achievements() {
       <div className="container">
         <SectionHeading>Achievements</SectionHeading>
 
-        <article
-          style={{
-            marginTop: 'var(--space-5)',
-            paddingTop: 'var(--space-4)',
-            borderTop: '1px solid var(--color-border)',
-            maxWidth: 'var(--measure-max)',
-          }}
-        >
-          <h3
+        <Reveal>
+          <article
+            className="glass-surface"
             style={{
-              fontSize: 'var(--font-size-h3)',
-              fontWeight: 'var(--weight-display-semibold)',
+              marginTop: 'var(--space-5)',
+              padding: 'var(--space-5)',
+              maxWidth: 'var(--measure-max)',
             }}
           >
-            {achievement.title}
-          </h3>
+            <h3
+              style={{
+                fontSize: 'var(--font-size-h3)',
+                fontWeight: 'var(--weight-display-semibold)',
+              }}
+            >
+              {achievement.title}
+            </h3>
 
-          <p
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 'var(--font-size-small)',
-              color: 'var(--color-text-muted)',
-              marginTop: 'var(--space-1)',
-            }}
-          >
-            {achievement.date}
-          </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: 'var(--font-size-small)',
+                color: 'var(--color-text-muted)',
+                marginTop: 'var(--space-1)',
+              }}
+            >
+              {achievement.date}
+            </p>
 
-          <p
-            style={{
-              color: 'var(--color-text-muted)',
-              marginTop: 'var(--space-2)',
-            }}
-          >
-            {achievement.description}
-          </p>
-        </article>
+            <p
+              style={{
+                color: 'var(--color-text-muted)',
+                marginTop: 'var(--space-2)',
+              }}
+            >
+              {achievement.description}
+            </p>
+          </article>
+        </Reveal>
       </div>
     </section>
   );

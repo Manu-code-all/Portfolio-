@@ -1,6 +1,7 @@
 import { projects } from '@/content/projects';
 import { ProjectCard } from '@/components/projects/ProjectCard';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { Reveal } from '@/components/ui/Reveal';
 
 // Import all three diagram components
 import StudentManagementDiagram from '@/components/projects/diagrams/StudentManagementDiagram';
@@ -33,7 +34,7 @@ export function Projects() {
         </SectionHeading>
 
         <div className="project-list">
-          {sortedProjects.map((project) => {
+          {sortedProjects.map((project, index) => {
             // Get the diagram component for this project
             const DiagramComponent = diagramMap[project.slug as keyof typeof diagramMap];
 
@@ -41,11 +42,12 @@ export function Projects() {
             const diagram = DiagramComponent ? <DiagramComponent /> : null;
 
             return (
-              <ProjectCard
-                key={project.slug}
-                project={project}
-                diagram={diagram}
-              />
+              <Reveal key={project.slug} delay={index * 0.08}>
+                <ProjectCard
+                  project={project}
+                  diagram={diagram}
+                />
+              </Reveal>
             );
           })}
         </div>

@@ -85,7 +85,7 @@ export function ProjectCard({ project, diagram }: ProjectCardProps) {
   };
 
   return (
-    <div className="project-row">
+    <div className="project-row glass-surface">
       <button
         id={toggleId}
         className="project-toggle"

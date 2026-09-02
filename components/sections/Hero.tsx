@@ -1,5 +1,6 @@
 import { ExternalLink } from '@/components/ui/ExternalLink';
 import { ResumeLink } from '@/components/ui/ResumeLink';
+import { ParticleButton } from '@/components/ui/ParticleButton';
 import { profileLinks } from '@/content/profile';
 
 /**
@@ -8,17 +9,20 @@ import { profileLinks } from '@/content/profile';
  * a one-time signal animation. No photo/headshot.
  *
  * Copy and structure match docs/features/01-hero.md and wireframe/index.html.
+ * Spectacular direction (DESIGN.md §9): shimmer headline, ambient glow,
+ * glass diagram panel, particle-burst buttons.
  */
 export function Hero() {
   return (
     <section className="hero" id="hero">
+      <div className="ambient-glow" style={{ top: '-160px', right: '-120px' }} aria-hidden="true" />
       <div className="container hero-grid">
         <div className="hero-content">
           {/* Eyebrow label */}
           <p className="eyebrow">Manu Gupta — Portfolio</p>
 
           {/* Primary heading (sole h1 in the page) */}
-          <h1>Building thoughtful software, from the system outward.</h1>
+          <h1 className="shimmer-text">Building thoughtful software, from the system outward.</h1>
 
           {/* Supporting context */}
           <p className="hero-support">
@@ -31,12 +35,16 @@ export function Hero() {
 
           {/* Primary actions: View projects + Download resume */}
           <div className="hero-actions">
-            <a href="#projects" className="btn-outline">
-              View projects
-            </a>
-            <ResumeLink className="btn-primary">
-              Download resume
-            </ResumeLink>
+            <ParticleButton>
+              <a href="#projects" className="btn-outline">
+                View projects
+              </a>
+            </ParticleButton>
+            <ParticleButton>
+              <ResumeLink className="btn-primary">
+                Download resume
+              </ResumeLink>
+            </ParticleButton>
           </div>
 
           {/* Profile links: GitHub, LinkedIn, LeetCode, GeeksforGeeks */}

@@ -127,3 +127,17 @@ From `impeccable.md` absolute bans + `taste-design.md` anti-patterns + project-s
 - A standalone "System Design" portfolio section (per `docs/DISCOVERY.md` — no real track record to show)
 - AI/ML branding or framing anywhere (per `docs/DISCOVERY.md`)
 - Stock "person coding at laptop" photography — no imagery beyond the project architecture diagrams and, if available later, real project screenshots
+
+**Superseded 2026-09-01 by §9 (Spectacular direction):** the user asked to redesign toward a bolder, more animated treatment inspired by Kokonut UI's component patterns. Glassmorphism and gradient/shimmer text are now in active use (see §9) — struck from this ban list for this project going forward. Everything else above still holds: no purple/blue AI-gradient hue (glow stays in the rust/accent family), no fabricated stats, no AI/ML framing, no stock photography, same font list, same "no System Design section" rule.
+
+## 9. Spectacular direction (added 2026-09-01)
+
+The user reviewed a live side-by-side comparison (two directions built as an artifact: "Restrained" — the original Machine-Shop Minimal polish — vs "Spectacular" — Kokonut-UI-inspired glass/particle/shimmer, re-skinned to this project's own tokens) and chose **Spectacular**. Applied across the real site:
+
+- **Glass surfaces** (`.glass-surface` in `globals.css`): translucent graphite background, rust-tinted border, `backdrop-filter: blur(20px) saturate(150%)`, soft inset highlight, lift-on-hover. Used for: project rows, architecture diagram panels, the hero graphic panel, skill-group cards, the achievement card, the about-facts panel, and the sticky header (lighter blur, no lift).
+- **Shimmer text** (`.shimmer-text`): an animated gradient sweep (Bone → warm highlight → Signal Rust → Bone) across the hero `<h1>` only — not used on body text or every heading, to keep it a signature moment rather than noise.
+- **Ambient glow** (`.ambient-glow`): a soft rust-colored radial blob, slow drift, positioned behind the hero graphic. Always inside an `overflow: hidden` positioned ancestor — a glow blob bleeding past its section is a real horizontal-scroll bug, not just a visual nitpick (see `docs/memory/MEMORY.md`).
+- **Particle buttons** (`components/ui/ParticleButton.tsx`): a canvas overlay that bursts a handful of accent-colored particles on hover. Used on the two hero CTAs. No-ops entirely under `prefers-reduced-motion: reduce`.
+- **Scroll reveals** (`components/ui/Reveal.tsx`, using `motion` — motion.dev/Framer Motion's successor): a `whileInView` fade + slide-up, once per element, for About, Projects, Skills, and Achievements content. Falls back to a plain wrapper (no animation) under `prefers-reduced-motion: reduce`, via `useReducedMotion()`.
+
+**Palette discipline preserved:** every glass/glow/shimmer value is built from the existing Warm Graphite / Signal Rust / Bone tokens — never Kokonut's own default purple/neutral-glass look. The accent stays singular; nothing here introduces a second hue.

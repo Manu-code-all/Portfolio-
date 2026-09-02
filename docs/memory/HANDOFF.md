@@ -85,7 +85,7 @@ Sonnet review then found 2 more real bugs, both fixed and independently re-verif
 
 ## Next action
 
-None required — the project is shipped. Optional follow-ups the user might want later (not blocking, not scheduled): switch the GitHub default branch and Vercel Production Branch to `main` for conventional naming; add a custom domain in Vercel; run PageSpeed Insights from a normal network for a fully authoritative Performance number; build the previously-deferred real features (Medicity Google Maps/symptom lookup, Student Management System Collections-based O(1) lookup — see the Resume section above) into the actual project repos now that the portfolio itself doesn't depend on them being real.
+None required — the project is shipped, and mobile Performance is confirmed 97 (Accessibility/Best Practices/SEO all 100) via PageSpeed Insights against the live URL. Branch naming tidied up (2026-09-01): GitHub default branch and Vercel Production Branch both now point at `main`; `mastermind/portfolio` kept around in sync, not deleted. Optional follow-ups the user might want later (not blocking, not scheduled): add a custom domain in Vercel; build the previously-deferred real features (Medicity Google Maps/symptom lookup, Student Management System Collections-based O(1) lookup — see the Resume section above) into the actual project repos now that the portfolio itself doesn't depend on them being real.
 
 ## Session resume prompt
 

@@ -1001,28 +1001,28 @@ button:focus-visible {
    classes so all 3 can be mounted on the same page (Projects section)
    without colliding. Moved here from per-component styled-jsx so these
    components can stay server components (no 'use client' needed). */
-.sms-diagram-desktop,
-.medicity-diagram-desktop,
-.jobportal-diagram-desktop {
+.diagram-figure svg.sms-diagram-desktop,
+.diagram-figure svg.medicity-diagram-desktop,
+.diagram-figure svg.jobportal-diagram-desktop {
   display: block;
 }
 
-.sms-diagram-mobile,
-.medicity-diagram-mobile,
-.jobportal-diagram-mobile {
+.diagram-figure svg.sms-diagram-mobile,
+.diagram-figure svg.medicity-diagram-mobile,
+.diagram-figure svg.jobportal-diagram-mobile {
   display: none;
 }
 
 @media (max-width: 639px) {
-  .sms-diagram-desktop,
-  .medicity-diagram-desktop,
-  .jobportal-diagram-desktop {
+  .diagram-figure svg.sms-diagram-desktop,
+  .diagram-figure svg.medicity-diagram-desktop,
+  .diagram-figure svg.jobportal-diagram-desktop {
     display: none;
   }
 
-  .sms-diagram-mobile,
-  .medicity-diagram-mobile,
-  .jobportal-diagram-mobile {
+  .diagram-figure svg.sms-diagram-mobile,
+  .diagram-figure svg.medicity-diagram-mobile,
+  .diagram-figure svg.jobportal-diagram-mobile {
     display: block;
   }
 }

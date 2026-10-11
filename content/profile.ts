@@ -3,9 +3,9 @@ import { SitePerson, ProfileLinks } from "@/lib/types";
 export const profile: SitePerson = {
   name: "Manu Gupta",
   headline: "I like understanding how the pieces fit together.",
-  bio: "I’m Manu Gupta, a third-year B.Tech Computer Science student at Galgotia University. I build academic and personal projects across Java and the web, with an interest in the decisions that make an application clear to use, easier to maintain, and dependable as it grows.\n\nRight now, I’m strengthening my foundations in data structures and algorithms, database systems, computer organization, and Java while continuing to build full-stack projects.",
+  bio: "I’m Manu Gupta, a third-year B.Tech Computer Science student at Galgotias University. I build full-stack and backend systems, from a concurrency-safe clinic booking platform to a constraint solver for railway maintenance planning, with a focus on correctness, security and behaviour I can measure.\n\nRight now, I’m deepening my foundations in data structures and algorithms and database systems while building projects that I verify with load tests, unit tests and real deployments.",
   education: {
-    institution: "Galgotia University",
+    institution: "Galgotias University",
     degree: "B.Tech, Computer Science",
     dates: "September 2024–2028",
     cgpa: "7.7 / 10.0",

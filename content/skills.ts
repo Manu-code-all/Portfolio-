@@ -3,18 +3,31 @@ import { SkillGroup } from "@/lib/types";
 export const skills: SkillGroup[] = [
   {
     groupName: "Languages",
-    skills: ["C", "Java", "SQL", "JavaScript"],
+    skills: ["Java", "Python", "C++", "C", "SQL", "JavaScript", "TypeScript"],
   },
   {
-    groupName: "Technologies",
+    groupName: "Frameworks & Libraries",
     skills: [
+      "Spring Boot",
+      "FastAPI",
       "React.js",
-      "Express.js",
-      "Node.js",
-      "MongoDB",
-      "Apache Tomcat",
-      "Maven",
+      "Streamlit",
+      "Google OR-Tools",
+      "Pytest",
+    ],
+  },
+  {
+    groupName: "Databases & Tools",
+    skills: [
+      "PostgreSQL",
+      "SQLite",
+      "Docker",
       "Git / GitHub",
+      "k6",
+      "Flyway",
+      "Testcontainers",
+      "Railway",
+      "Vercel",
     ],
   },
 ];

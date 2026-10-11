@@ -13,7 +13,7 @@ interface ProjectCardProps {
  * Inline SVG preview icons for each project (84x56, aria-hidden).
  * Simple abstract representations, not tied to source evidence.
  */
-function StudentManagementPreview() {
+function LedgerLensPreview() {
   return (
     <svg viewBox="0 0 84 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       {/* Input box */}
@@ -42,7 +42,7 @@ function MedicityPreview() {
   );
 }
 
-function JobPortalPreview() {
+function RailBlockPreview() {
   return (
     <svg viewBox="0 0 84 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       {/* Frontend layer */}
@@ -64,12 +64,12 @@ function JobPortalPreview() {
 
 function PreviewIcon({ slug }: { slug: string }) {
   switch (slug) {
-    case 'student-management':
-      return <StudentManagementPreview />;
     case 'medicity':
       return <MedicityPreview />;
-    case 'job-portal':
-      return <JobPortalPreview />;
+    case 'ledgerlens':
+      return <LedgerLensPreview />;
+    case 'railblock':
+      return <RailBlockPreview />;
     default:
       return null;
   }

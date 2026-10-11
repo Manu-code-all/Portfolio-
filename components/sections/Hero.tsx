@@ -30,7 +30,7 @@ export function Hero() {
             clear, reliable applications.
           </p>
           <p className="hero-context">
-            Galgotia University · B.Tech Computer Science · 2024–2028
+            Galgotias University · B.Tech Computer Science · 2024–2028
           </p>
 
           {/* Primary actions: View projects + Download resume */}

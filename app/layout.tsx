@@ -35,13 +35,13 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio-theta-ten-ez943ji5sr.vercel.app"), // production domain, assigned by Vercel at T26 deploy
   title: "Manu Gupta — Portfolio",
   description:
-    "Manu Gupta — third-year B.Tech Computer Science student, Galgotia University. Projects, skills, achievements, resume.",
+    "Manu Gupta — third-year B.Tech Computer Science student, Galgotias University. Projects, skills, achievements, resume.",
   openGraph: {
     type: "website",
     url: "/",
     title: "Manu Gupta — Portfolio",
     description:
-      "Manu Gupta — third-year B.Tech Computer Science student, Galgotia University. Projects, skills, achievements, resume.",
+      "Manu Gupta — third-year B.Tech Computer Science student, Galgotias University. Projects, skills, achievements, resume.",
     siteName: "Manu Gupta — Portfolio",
     images: [
       {
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Manu Gupta — Portfolio",
     description:
-      "Manu Gupta — third-year B.Tech Computer Science student, Galgotia University. Projects, skills, achievements, resume.",
+      "Manu Gupta — third-year B.Tech Computer Science student, Galgotias University. Projects, skills, achievements, resume.",
     images: ["/og-image.png"],
   },
 };

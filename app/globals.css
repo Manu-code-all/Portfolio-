@@ -997,32 +997,21 @@ button:focus-visible {
   font-weight: var(--weight-mono-medium);
 }
 
-/* Per-diagram desktop/mobile SVG toggle — each diagram gets its own pair of
-   classes so all 3 can be mounted on the same page (Projects section)
-   without colliding. Moved here from per-component styled-jsx so these
-   components can stay server components (no 'use client' needed). */
-.diagram-figure svg.sms-diagram-desktop,
-.diagram-figure svg.medicity-diagram-desktop,
-.diagram-figure svg.jobportal-diagram-desktop {
+/* Desktop/mobile SVG toggle for the shared FlowDiagram component. */
+.diagram-figure svg.flow-diagram-desktop {
   display: block;
 }
 
-.diagram-figure svg.sms-diagram-mobile,
-.diagram-figure svg.medicity-diagram-mobile,
-.diagram-figure svg.jobportal-diagram-mobile {
+.diagram-figure svg.flow-diagram-mobile {
   display: none;
 }
 
 @media (max-width: 639px) {
-  .diagram-figure svg.sms-diagram-desktop,
-  .diagram-figure svg.medicity-diagram-desktop,
-  .diagram-figure svg.jobportal-diagram-desktop {
+  .diagram-figure svg.flow-diagram-desktop {
     display: none;
   }
 
-  .diagram-figure svg.sms-diagram-mobile,
-  .diagram-figure svg.medicity-diagram-mobile,
-  .diagram-figure svg.jobportal-diagram-mobile {
+  .diagram-figure svg.flow-diagram-mobile {
     display: block;
   }
 }

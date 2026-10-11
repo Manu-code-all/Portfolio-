@@ -7,7 +7,7 @@ A personal portfolio site for Manu Gupta to show when asked "let me see your wor
 ## 2. Who this is for (the owner)
 
 - **Name:** Manu Gupta
-- **Status:** 3rd-year B.Tech Computer Science student, Galgotia University, India (started Sept 2024)
+- **Status:** 3rd-year B.Tech Computer Science student, Galgotias University, India (started Sept 2024)
 - **CGPA:** 7.7/10.0 (current)
 - **Experience:** Purely academic + personal/course projects. No internship or professional work experience yet.
 - **Field framing:** Developer with a systems-design interest. Explicitly **not** positioned as AI/ML-focused.
@@ -29,10 +29,10 @@ No specific reference sites given — take inspiration broadly from best-in-clas
 
 1. **Hero / intro** — name, one-line positioning (developer, systems-minded), links out (GitHub, LinkedIn, LeetCode, GfG)
 2. **About** — background, education, what he's focused on learning/building
-3. **Education / timeline** — Galgotia University (current), prior schooling only if it adds signal (likely condensed/omitted — no work history to timeline instead)
+3. **Education / timeline** — Galgotias University (current), prior schooling only if it adds signal (likely condensed/omitted — no work history to timeline instead)
 4. **Featured Projects — 3 case studies** (see §7)
-5. **Skills** — grouped: Languages (C, Java, SQL, JavaScript), Technologies (React.js, Express.js, Node.js, MongoDB, SQL, Apache Tomcat, Maven, Git/GitHub)
-6. **Achievements** — Smart India Hackathon (SIH) Sept 2025, qualified/ranked top 130 of 500+ teams
+5. **Skills** — grouped: Languages (Java, Python, C++, C, SQL, JavaScript, TypeScript), Frameworks & Libraries (Spring Boot, FastAPI, React.js, Streamlit, OR-Tools, Pytest), Databases & Tools (PostgreSQL, SQLite, Docker, Git/GitHub, k6, Flyway, Testcontainers, Railway, Vercel)
+6. **Achievements** — Smart India Hackathon (SIH) 2025 Pre-Qualifier, Sept 2025, ranked top 130 of 500+ teams; 150+ DSA problems on LeetCode and GeeksforGeeks
 7. **Resume** — downloadable PDF
 8. **Contact** — email (manug9868@gmail.com), links to GitHub/LinkedIn/LeetCode/GeeksforGeeks
 
@@ -42,20 +42,20 @@ Explicitly **excluded**: standalone "System Design" portfolio section (no real t
 
 Each gets a real case study: problem → architecture (with an actual diagram: DB schema / request flow / component breakdown) → stack → outcome → links. Built from the real repos, not just resume bullet points.
 
-1. **Student Management System**
-   - Repo: https://github.com/Manu-code-all/StudentMarksCGPA-Java.git
-   - Java, OOP, File I/O (flat-file persistence — verified; do not claim Java Collections Framework, not present in source)
-   - Records marks, calculates GPA/CGPA, generates academic reports
-
-2. **Medicity** — static healthcare website
+1. **Medicity** — clinic and pharmacy platform
    - Repo: https://github.com/Manu-code-all/Medicity.git
-   - HTML, CSS/SCSS, JavaScript/jQuery, PHP mailer asset
-   - Present as: a multi-page healthcare interface with appointment, doctor, department, service, shop, and contact pages. The site’s front-end structure and deployment configuration are the story; do not claim a backend, data store, AI, or recommendation engine.
+   - Java 21, Spring Boot 3, React 18, TypeScript, PostgreSQL, Docker, k6
+   - Concurrency-safe slot booking (partial unique index, k6-verified), JWT security, deployed on Railway and Vercel
 
-3. **Job-Portal-Web-App**
-   - Repo: https://github.com/Manu-code-all/Job-Portal-Webapp-Java-final-project.git
-   - Java, JSP, Servlets, JDBC, MySQL, Apache Tomcat, Maven, MVC architecture
-   - Employers post jobs, seekers apply, admins manage — full-stack Java web app
+2. **LedgerLens** — AI reconciliation controller (Razorpay Hackathon, Track 4)
+   - Repo: https://github.com/Manu-code-all/Ledgerlens.git
+   - Python, FastAPI, React, Groq LLM, Pytest
+   - Three-stage pipeline: rules, arithmetic batch detection, AI agent for the residue; 75% baseline lifted to 92.2% on a synthetic batch
+
+3. **RailBlock** — automatic block planning for Indian Railways (SIH 2026)
+   - Repo: https://github.com/Manu-code-all/railblock.git
+   - Python, Google OR-Tools CP-SAT, FastAPI, React, TypeScript, Streamlit, SQLite
+   - Proved-optimal conflict-free plans, or the minimal conflicting set; 17-test suite
 
 Stretch goal (not committed): 1-2 short "design practice" write-ups (e.g. URL shortener, rate limiter) worked through during the build, clearly labeled as self-study/practice — only if time allows after the core 3 case studies are solid.
 

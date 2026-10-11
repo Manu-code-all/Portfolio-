@@ -1,5 +1,5 @@
 export type Project = {
-  slug: "student-management" | "medicity" | "job-portal";
+  slug: "medicity" | "ledgerlens" | "railblock";
   title: string;
   oneLiner: string;
   problem: string;

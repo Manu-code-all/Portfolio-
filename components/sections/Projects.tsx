@@ -4,18 +4,18 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 
 // Import all three diagram components
-import StudentManagementDiagram from '@/components/projects/diagrams/StudentManagementDiagram';
 import MedicityDiagram from '@/components/projects/diagrams/MedicityDiagram';
-import JobPortalDiagram from '@/components/projects/diagrams/JobPortalDiagram';
+import LedgerLensDiagram from '@/components/projects/diagrams/LedgerLensDiagram';
+import RailBlockDiagram from '@/components/projects/diagrams/RailBlockDiagram';
 
 /**
  * Map project slugs to their corresponding diagram components.
  * This is the one place in the codebase where a slug is matched to a diagram.
  */
 const diagramMap = {
-  'student-management': StudentManagementDiagram,
   'medicity': MedicityDiagram,
-  'job-portal': JobPortalDiagram,
+  'ledgerlens': LedgerLensDiagram,
+  'railblock': RailBlockDiagram,
 } as const;
 
 /**
